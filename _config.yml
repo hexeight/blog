@@ -1,6 +1,6 @@
 title: hex8
 # logo: "images/logo.svg" # You can add own logo image.
-description: Build, breaking and everything in between.
+description: Breaking, building and everything in between.
 baseurl: "/blog" # The subpath of your site, e.g. /blog
 url: "" # The base hostname & protocol for your site, e.g. http://example.com
 
