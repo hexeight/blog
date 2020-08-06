@@ -21,7 +21,7 @@ twitter: https://twitter.com/omtalk # Add your Twitter handle
 hero: true # To enable the section hero, use the value true. To turn off use the value false.
 hero-title: Breaking, building # Add your hero title
 hero-subtitle: and everything in between. # Add your hero subtitle
-hero-image: images/craft.jpg # Add background image in section hero
+hero-image: images/craft.png # Add background image in section hero
 
 # Footer
 footer-image: images/dark.jpg # Add background image in footer
