@@ -24,7 +24,7 @@ hero-subtitle: and everything in between. # Add your hero subtitle
 hero-image: images/craft.png # Add background image in section hero
 
 # Footer
-footer-image: images/dark.jpg # Add background image in footer
+footer-image: images/fly.png # Add background image in footer
 
 # Comment Section (Disqus)
 # disqus-identifier: mr-brown # Add your shortname for Disqus Comment. For example mr-brown
