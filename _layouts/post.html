@@ -69,6 +69,8 @@ layout: default
 					</ul>
 				</div>
 
+				{% if site.disqus-identifier %} {% include disqus-comments.html %} {% endif %}
+
 				<div class="widget-recent">
 					<h5 class="widget__title">Recommended for you</h5>
 					<div class="recent-box">
@@ -102,9 +104,6 @@ layout: default
 					</form>
 				</div>
 -->	
-	
-				{% if site.disqus-identifier %} {% include disqus-comments.html %} {% endif %}
-	
 			</article>
 			<!-- end post -->
 		</div>
