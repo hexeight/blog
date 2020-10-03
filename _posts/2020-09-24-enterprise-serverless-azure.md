@@ -2,6 +2,7 @@
 layout: post
 title: "Solving an Enterprise Integration problem with Azure Serverless"
 date: 2020-10-03
+image:  /images/posts/enterprise-serverless-banner.png
 excerpt: "There are proven benefits of abstracting out servers for certain solutions where the focus lies more on the business logic and lesser on the logistics of it. Serverless offerings are modelled for simplicity. This can quickly lead to limitations especially while building enterprise focused solutions surrounded by niche requirements or compliances. Azure seems to have clearly inherited Microsoft's proficiency in catering to Enterprise needs. Azure's serverless offerings have managed to extend an array of features that help build compliant solutions with fair degree of ease. To evaluate just that, here we look at an Enterprise Integration problem and design a solution using Azure's serverless offerings and highlight some of their capabilities."
 tags: [serverless, azure, enterprise, integration]
 comments: true
