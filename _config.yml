@@ -27,7 +27,7 @@ hero-image: images/craft.png # Add background image in section hero
 footer-image: images/fly.png # Add background image in footer
 
 # Comment Section (Disqus)
-# disqus-identifier: mr-brown # Add your shortname for Disqus Comment. For example mr-brown
+disqus-identifier: hex8 # Add your shortname for Disqus Comment. For example mr-brown
 
 # Google Analytics
 google-analytics: "UA-101692090-1" # Add your identifier. For example UA-99631805-1.
