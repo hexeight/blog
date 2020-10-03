@@ -6,9 +6,9 @@
         <div class="pagination__list">
           {% if paginator.previous_page %}
           {% if paginator.previous_page == 1 %}
-            <a class="previous-link" href="/"><i class="ion ion-ios-arrow-back"></i> Prev</a>
+            <a class="previous-link" href="{{site.baseurl}}/"><i class="ion ion-ios-arrow-back"></i> Prev</a>
           {% else %}
-            <a class="previous-link" href="/page/{{ paginator.previous_page }}/"><i class="ion ion-ios-arrow-back"></i>  Prev</a>
+            <a class="previous-link" href="{{site.baseurl}}/page/{{ paginator.previous_page }}/"><i class="ion ion-ios-arrow-back"></i>  Prev</a>
           {% endif %}
     
           {% else %}

@@ -9,6 +9,25 @@
   }
 }
 
+.post__content {
+  text-align: justify;
+  
+  h1 a {
+    color: $dark;
+  }
+
+  a {
+    color: $gray;
+    text-decoration: underline;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .post-info {
   font-size: 14px;
   line-height: 18px;

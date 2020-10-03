@@ -76,17 +76,17 @@ layout: default
 						<div class="recent-posts">
 							<div class="recent-posts__content">			
 								{% if post.image and post.image != "" %}
-									<a class="recent-posts__image wow fadeIn" href="{{ post.url }}"
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}{{ post.url }}"
 										style="background-image: url('{{ post.image | relative_url }}')"></a>
 								{% else %}
 								{% endif %}
-									<p class="recent-posts__title"><a href="{{ post.url }}">{{ post.title }}</a></p>
+									<p class="recent-posts__title"><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></p>
 							</div>
 						</div>
 						{% endfor %}
 					</div>
 				</div>
-
+<!--
 				<div class="widget-newsletter">
 					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
 					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
@@ -101,7 +101,7 @@ layout: default
 						</div>
 					</form>
 				</div>
-	
+-->	
 	
 				{% if site.disqus-identifier %} {% include disqus-comments.html %} {% endif %}
 	

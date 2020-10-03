@@ -86,4 +86,10 @@ $(document).ready(function() {
   $(".page img, .post img").addClass("wow fadeIn");
   new WOW().init();
 
+  // Force all explicit links to open in new tab
+  var links = $(".post__content a[href^=http]");
+  $.each(links, function (index, val) {
+    val.target = "_blank";
+    val.rel = "noopener";
+  });
 });
