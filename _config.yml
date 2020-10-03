@@ -1,4 +1,4 @@
-title: hex8
+title: hex8 — blog
 # logo: "images/logo.svg" # You can add own logo image.
 description: Breaking, building and everything in between.
 baseurl: "/blog" # The subpath of your site, e.g. /blog
@@ -30,7 +30,7 @@ footer-image: images/fly.png # Add background image in footer
 # disqus-identifier: mr-brown # Add your shortname for Disqus Comment. For example mr-brown
 
 # Google Analytics
-google-analytics: "" # Add your identifier. For example UA-99631805-1.
+google-analytics: "UA-101692090-1" # Add your identifier. For example UA-99631805-1.
 
 # Newsletter
 mailchimp: "" # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
