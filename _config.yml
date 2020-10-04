@@ -1,5 +1,5 @@
-title: hex8
-# logo: "images/logo.svg" # You can add own logo image.
+title: "0x8"
+logo: "images/0x8.png" # You can add own logo image.
 description: Breaking, building and everything in between.
 baseurl: "/blog" # The subpath of your site, e.g. /blog
 url: "https://0x8.in" # The base hostname & protocol for your site, e.g. http://example.com
@@ -57,7 +57,7 @@ include:
   - _pages
 
 # Tags
-tag_page_dir:         tag
+tag_page_dir:         blog/tag
 tag_page_layout:      tag_page
 tag_permalink_style:  pretty
 
