@@ -1,14 +1,59 @@
----
-layout: null
----
 [
-  {% for post in site.posts %}
+  
     {
-      "title"    : "{{ post.title | escape }}",
-      "category" : "{{ post.category }}",
-      "tags"     : "{{ post.tags | array_to_sentence_string }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "date"     : "{{ post.date }}"
-    } {% unless forloop.last %},{% endunless %}
-  {% endfor %}
+      "title"    : "Solving an Enterprise Integration problem with Azure Serverless",
+      "category" : "",
+      "tags"     : "serverless, azure, enterprise, and integration",
+      "url"      : "/blog/2020/10/03/enterprise-serverless-azure/",
+      "date"     : "2020-10-03 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Cryptographic Identities for the World Wide Web",
+      "category" : "",
+      "tags"     : "web 3.0, crypto, oauth, authentication, keygen, and webcrypto",
+      "url"      : "/blog/2017/12/30/web-crypto/",
+      "date"     : "2017-12-30 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Blockchains for an Open Zero-rating network",
+      "category" : "",
+      "tags"     : "web 3.0, zero rating, free internet, and blockchain",
+      "url"      : "/blog/2017/06/18/blockchains-for-open-zero-rating-networks/",
+      "date"     : "2017-06-18 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Cryptography, Entropy and the art of not winning a lottery ticket",
+      "category" : "",
+      "tags"     : "blockchain, cryptography, ecdsa, entropy, and rsa",
+      "url"      : "/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/",
+      "date"     : "2017-04-30 04:29:18 +0530"
+    } ,
+  
+    {
+      "title"    : "Implementing Multi-tenant SSO in ASP.net MVC5 using Owin",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/blog/2016/08/08/implementing-multi-tenant-sso-in-asp-net-mvc5-using-owin/",
+      "date"     : "2016-08-09 05:17:59 +0530"
+    } ,
+  
+    {
+      "title"    : "Controlling lights connected to a Raspberry Pi from a Windows Phone app",
+      "category" : "",
+      "tags"     : "Microsoft Azure, RaspberryPi, and Windows Phone",
+      "url"      : "/blog/2015/02/22/controlling-lights-connected-to-a-raspberry-pi-from-a-windows-phone-app/",
+      "date"     : "2015-02-22 19:29:22 +0530"
+    } ,
+  
+    {
+      "title"    : "Control your lights with Cortana &amp;#8211; watch this space for a DIY",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/blog/2015/01/20/control-your-lights-with-cortana-watch-this-space-for-a-diy/",
+      "date"     : "2015-01-20 18:46:05 +0530"
+    } 
+  
 ]

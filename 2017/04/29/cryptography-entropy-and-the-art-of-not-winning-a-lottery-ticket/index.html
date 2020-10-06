@@ -6,27 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>0x8 — Page not found</title>
-  <meta name='description' content='Breaking, building and everything in between.'>
+  <title>0x8 — Cryptography, Entropy and the art of not winning a lottery ticket</title>
+  <meta name='description' content='With the new kids in town called “Blockchains”, I have ended up spending weeks if not months to really get a grip on how things function under the hood; and ...'>
 
-  <link rel="canonical" href="https://0x8.in/blog/404.html">
+  <link rel="canonical" href="https://0x8.in/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/">
   <link rel="alternate" type="application/rss+xml" title="0x8" href="/blog/feed.xml">
 
-  <meta name="title" content="Page not found">
-  <meta name="description" content="Breaking, building and everything in between.">
+  <meta name="title" content="Cryptography, Entropy and the art of not winning a lottery ticket">
+  <meta name="description" content="With the new kids in town called “Blockchains”, I have ended up spending weeks if not months to really get a grip on how things function under the hood; and ...">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://0x8.in/blog/404.html">
-  <meta property="og:title" content="0x8 — Page not found">
-  <meta name="description" content="Breaking, building and everything in between.">
-  <meta property="og:image" content="images/03.jpg">
+  <meta property="og:url" content="https://0x8.in/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/">
+  <meta property="og:title" content="0x8 — Cryptography, Entropy and the art of not winning a lottery ticket">
+  <meta name="description" content="With the new kids in town called “Blockchains”, I have ended up spending weeks if not months to really get a grip on how things function under the hood; and ...">
+  <meta property="og:image" content="/wp-content/uploads/2017/05/binary-1254484_1280.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://0x8.in/blog/404.html">
-<meta property="twitter:title" content="0x8 — Page not found">
-<meta property="twitter:description" content="Breaking, building and everything in between.">
-<meta property="twitter:image" content="images/03.jpg">
+<meta property="twitter:url" content="https://0x8.in/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/">
+<meta property="twitter:title" content="0x8 — Cryptography, Entropy and the art of not winning a lottery ticket">
+<meta property="twitter:description" content="With the new kids in town called “Blockchains”, I have ended up spending weeks if not months to really get a grip on how things function under the hood; and ...">
+<meta property="twitter:image" content="/wp-content/uploads/2017/05/binary-1254484_1280.png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
@@ -251,7 +251,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			<h1 class="page__title wow fadeInUp">Page not found</h1>
+			
+			<div class="post__head wow fadeInUp">
+				<h1 class="post__title">Cryptography, Entropy and the art of not winning a lottery ticket</h1>
+				<div class="post-info">
+					
+					<span class="post-tags">
+						posted in
+						
+							<a href="/blog/tag/blockchain" class="post-tags__tag">blockchain</a>
+						
+							<a href="/blog/tag/cryptography" class="post-tags__tag">cryptography</a>
+						
+							<a href="/blog/tag/ecdsa" class="post-tags__tag">ecdsa</a>
+						
+							<a href="/blog/tag/entropy" class="post-tags__tag">entropy</a>
+						
+							<a href="/blog/tag/rsa" class="post-tags__tag">rsa</a>
+						
+					</span>
+					
+					<span class="post__meta">
+						<span class="post__date"> on <a href="/blog">
+							<time datetime="2017-04-30T04:29:18+05:30">Apr 30, 2017</time></a>
+						</span>
+						<span class="article__author"> by <a href="/blog/about/">Omkar Khair</a></span>
+					</span>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
@@ -259,25 +287,131 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			<!-- begin page -->
-			<article class="page wow fadeInUp" data-wow-delay=".2s">
-					
-					<div class="page-image" style="background-image: url('/blog/images/03.jpg')"></div>
-				
-				<div class="page__content">
-					<div class="container">
-  <div class="row">
-    <div class="col col-12" style="text-align: center">
-      <h2>404</h2>
-      <p>The requested page could not be found.</p>
-      <p><i class="ion ion-md-arrow-back"></i> <a href="/blog/">Back to the blog</a></p>
-    </div>
-  </div>
-</div>
+			
+			<!-- begin post -->
+			<article class="post wow fadeInUp" data-wow-delay=".2s">
+	
+			
+				<div class="post-image" style="background-image: url('/blog/wp-content/uploads/2017/05/binary-1254484_1280.png')"></div>
+			
+	
+				<div class="post__content">
+					<p>With the new kids in town called “Blockchains”, I have ended up spending weeks if not months to really get a grip on how things function under the hood; and of the <a href="https://en.bitcoin.it/wiki/Proof_of_work" target="_blank">many</a>, <a href="https://en.wikipedia.org/wiki/Smart_contract" target="_blank">many</a>, <a href="http://www.michaelnielsen.org/ddi/how-the-bitcoin-protocol-actually-works/" target="_blank">many </a>things I learnt – I found one aspect of asymmetric cryptography the most interesting.</p>
+
+<p>This wasn’t my first introduction with Asymmetric key encryption, but this was the first time I really worried about how reliable it is. Algorithms like RSA and Elliptic Curve Digital Signature Algorithm (ECDSA) which is used by Bitcoin and Ethereum, generate a private key. This key acts as root to derive a public key. In case of Ethereum, a hash of this public key is used to derive the (public) address of the account. I’m leaving the explanation of how and why it works to the experts, and jumping to my point.</p>
+
+<p>If you noticed, the private key (password) and its address on the blockchain is generated by a computer out of thin air; just like a GUID is generated in most applications. This is all based on the principle that the odds of generating the same GUID are real low, putting all faith in probability. To be very honest, not having a 100% guarantee on security of these possibly high stake accounts scared me bit. That brought me to the question.</p>
+
+<p><strong>“What are the odds that someone ends up generating the same private key as me, and gains complete access to my Bitcoin address?”</strong></p>
+
+<p>A quick Google search led me to interesting answers all over the web. And of course, the probability is real low for a 160-bit address.</p>
+
+<p>2^160 = 1,460,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000.</p>
+
+<p>Though this is a large number, without a solid background of mathematics it is still difficult to remain convinced that no one on the face of earth will ever come across one of my keys simply by a stroke of luck. What did bring this number into solid perspective is the definition of Entropy (Physics. Not Information Theory).</p>
+
+<p>Apparently, matter all around us acts the way it does because entropy dictates this behavior; also via probability. Entropy is the simplest form is a measurement of disorder. I’ll let the TED-Ed by Jeff Philips explain it in detail.</p>
+
+<p><a href="https://www.youtube.com/watch?v=YM-uykVfq_E"><img src="https://img.youtube.com/vi/YM-uykVfq_E/0.jpg" alt="IMAGE ALT TEXT HERE" /></a></p>
+
+<p>Now if you think of the probability of stumbling into a key twice; the probability of it really happening is close to the probability of a steady glass of water heating up while next to ice. Or as one <a href="https://bitcoin.stackexchange.com/a/7732/47442" target="_blank">Bitcoin Stack exchange user explains</a> – “<em>the odds of your computer burning down and turning into a million-dollar lottery ticket are better than you stumbling into a duplicate address</em>”. Quite literally.</p>
+
+<p>If that doesn’t assure you how close to impossible it is to stumble into a key for a valid account, nothing will. <em>May the mathematical odds be in your favor</em>.</p>
 
 				</div>
+	
+				<div class="post__share">
+					<ul class="share__list list-reset">
+						<li class="share__item">
+							<a class="share__link share__facebook"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://0x8.in/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__twitter"
+								href="https://twitter.com/intent/tweet?text=Cryptography,%20Entropy%20and%20the%20art%20of%20not%20winning%20a%20lottery%20ticket&url=https://0x8.in/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__pinterest"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/&amp;media=https://0x8.in/blog/images//wp-content/uploads/2017/05/binary-1254484_1280.png&amp;description=Cryptography,%20Entropy%20and%20the%20art%20of%20not%20winning%20a%20lottery%20ticket"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				 <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread" class="comments__article"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//hex8.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
+<!-- end comments --> 
+
+				<div class="widget-recent">
+					<h5 class="widget__title">Recommended for you</h5>
+					<div class="recent-box">
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2020/10/03/enterprise-serverless-azure/"
+										style="background-image: url('/blog/images/posts/enterprise-serverless-banner.png')"></a>
+								
+									<p class="recent-posts__title"><a href="/blog/2020/10/03/enterprise-serverless-azure/">Solving an Enterprise Integration problem with Azure Serverless</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/12/30/web-crypto/">Cryptographic Identities for the World Wide Web</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/06/18/blockchains-for-open-zero-rating-networks/">Blockchains for an Open Zero-rating network</a></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+<!--
+				<div class="widget-newsletter">
+					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
+					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
+					<form class="newsletter-form validate" action="//"
+						method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
+						<div class="newsletter-group">
+							<div class="newsletter-group-top">
+								<label class="screen-reader-text" for="mce-EMAIL">Enter your mail address</label>
+								<input class="newsletter-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Enten your mail">
+							</div>
+							<input class="newsletter-button" id="membedded-subscribe" type="submit" name="subscribe" value="Subscribe">
+						</div>
+					</form>
+				</div>
+-->	
 			</article>
-			<!-- end page -->
+			<!-- end post -->
 		</div>
 	</div>
 </div>

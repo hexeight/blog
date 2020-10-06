@@ -6,27 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>0x8 — Page not found</title>
-  <meta name='description' content='Breaking, building and everything in between.'>
+  <title>0x8 — Cryptographic Identities for the World Wide Web</title>
+  <meta name='description' content='Centrally controlled logical identities put control in hands of web services. Users need to maintain full control of their identities, especially those that ...'>
 
-  <link rel="canonical" href="https://0x8.in/blog/404.html">
+  <link rel="canonical" href="https://0x8.in/blog/2017/12/30/web-crypto/">
   <link rel="alternate" type="application/rss+xml" title="0x8" href="/blog/feed.xml">
 
-  <meta name="title" content="Page not found">
-  <meta name="description" content="Breaking, building and everything in between.">
+  <meta name="title" content="Cryptographic Identities for the World Wide Web">
+  <meta name="description" content="Centrally controlled logical identities put control in hands of web services. Users need to maintain full control of their identities, especially those that ...">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://0x8.in/blog/404.html">
-  <meta property="og:title" content="0x8 — Page not found">
-  <meta name="description" content="Breaking, building and everything in between.">
-  <meta property="og:image" content="images/03.jpg">
+  <meta property="og:url" content="https://0x8.in/blog/2017/12/30/web-crypto/">
+  <meta property="og:title" content="0x8 — Cryptographic Identities for the World Wide Web">
+  <meta name="description" content="Centrally controlled logical identities put control in hands of web services. Users need to maintain full control of their identities, especially those that ...">
+  <meta property="og:image" content="/blog/images/craft.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://0x8.in/blog/404.html">
-<meta property="twitter:title" content="0x8 — Page not found">
-<meta property="twitter:description" content="Breaking, building and everything in between.">
-<meta property="twitter:image" content="images/03.jpg">
+<meta property="twitter:url" content="https://0x8.in/blog/2017/12/30/web-crypto/">
+<meta property="twitter:title" content="0x8 — Cryptographic Identities for the World Wide Web">
+<meta property="twitter:description" content="Centrally controlled logical identities put control in hands of web services. Users need to maintain full control of their identities, especially those that ...">
+<meta property="twitter:image" content="/blog/images/craft.png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
@@ -251,7 +251,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			<h1 class="page__title wow fadeInUp">Page not found</h1>
+			
+			<div class="post__head wow fadeInUp">
+				<h1 class="post__title">Cryptographic Identities for the World Wide Web</h1>
+				<div class="post-info">
+					
+					<span class="post-tags">
+						posted in
+						
+							<a href="/blog/tag/web 3.0" class="post-tags__tag">web 3.0</a>
+						
+							<a href="/blog/tag/crypto" class="post-tags__tag">crypto</a>
+						
+							<a href="/blog/tag/oauth" class="post-tags__tag">oauth</a>
+						
+							<a href="/blog/tag/authentication" class="post-tags__tag">authentication</a>
+						
+							<a href="/blog/tag/keygen" class="post-tags__tag">keygen</a>
+						
+							<a href="/blog/tag/webcrypto" class="post-tags__tag">webcrypto</a>
+						
+					</span>
+					
+					<span class="post__meta">
+						<span class="post__date"> on <a href="/blog">
+							<time datetime="2017-12-30T00:00:00+05:30">Dec 30, 2017</time></a>
+						</span>
+						<span class="article__author"> by <a href="/blog/about/">Omkar Khair</a></span>
+					</span>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
@@ -259,25 +289,186 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			<!-- begin page -->
-			<article class="page wow fadeInUp" data-wow-delay=".2s">
-					
-					<div class="page-image" style="background-image: url('/blog/images/03.jpg')"></div>
-				
-				<div class="page__content">
-					<div class="container">
-  <div class="row">
-    <div class="col col-12" style="text-align: center">
-      <h2>404</h2>
-      <p>The requested page could not be found.</p>
-      <p><i class="ion ion-md-arrow-back"></i> <a href="/blog/">Back to the blog</a></p>
-    </div>
-  </div>
-</div>
+			
+			<!-- begin post -->
+			<article class="post wow fadeInUp" data-wow-delay=".2s">
+	
+			
+	
+				<div class="post__content">
+					<h2 id="overview">Overview</h2>
+<p>Proof of Identity is a primary problem for any network protocol and the World Wide Web (HTTP) is no different. Introduction of the state management RFC in 1997<sup><a href="https://tools.ietf.org/html/rfc2109" target="_blank">[1]</a></sup> led to common use of Cookie headers to maintain a state of identity in HTTP sessions. These identities have been dominantly powered by logical authentication mechanisms. The world wide web has progressed far ahead in its adoption of identities that are authenticated by trusted delegates. These identities still aren’t universal over the world wide web. While these identities inter-operate, there’s isn’t a single central authority that controls these identities. To remain aligned with the philosophy of the open web, there shouldn’t be such a centralized entity. Here we discuss the possibility of extending cryptographic identities in the way they are being used in Distributed Ledger Technologies (popularly known as Blockchains), while keeping in mind the expected operational simplicity for an Internet user. Such identities would consistently keep the user in control and can be utilized by modern age applications to extend services with end-to-end encryption.</p>
+
+<p>Considering the deprecation of the proposed <code class="language-plaintext highlighter-rouge">keygen</code> element as part of the HTML5 specification<sup><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen#Browser_compatibility">[2]</a></sup>, we discuss a ground up approach for cryptographic signatures for authentication on the web.</p>
+
+<h2 id="cryptographic-signatures-for-the-web">Cryptographic signatures for the Web</h2>
+<p>As opposed to conventional authentication that relies on username and password combinations, cryptographic authentication for the web can rely on messages signed by users with their secrets. The signing mechanism needs to fullfil the following two requirements.</p>
+
+<ol>
+  <li>Allow users to sign challenges posed by webpages to prove their identity.</li>
+  <li>Allow users to sign HTTP transactions that may occur through forms or XHR requests as a proof of authenticity.</li>
+</ol>
+
+<h3 id="approach">Approach</h3>
+<ol>
+  <li>Users will first have to generate their keys using standardized algorithms asymmetric cryptography.</li>
+  <li>Web pages can challenge the user to sign a message with their secret/private key.</li>
+  <li>Web services receive the signed challenge, and parse the signature for a public key, and verify the signature against the same public key.</li>
+</ol>
+
+<p>Challenges can be used by web pages for registertion, login or even transactions. Public keys can be substituted as usernames for services that do not require user friendly naming conventions. Services like social platforms can map usernames with public keys for a friendly authentication experience.</p>
+
+<h3 id="browser-based-interface">Browser based interface</h3>
+<p>The standard HTML input field can be used as a base to build the signature component.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;input name="sign" type="signature" challenge="Hello Doctor Watson" /&gt;
+</code></pre></div></div>
+<p>On user action, the <code class="language-plaintext highlighter-rouge">signature</code> field generates a signature based on the form inputs filled by the user. The <code class="language-plaintext highlighter-rouge">challenge</code> attribute can be set by javascript or markup with information that needs to be signed.</p>
+
+<h3 id="verification-by-services">Verification by services</h3>
+<p>Web services can receive HTTP form requests or XHR requests to parse the signature element in plain text for verification.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sendTo=omtalk
+amount=3.14159
+sign=-----BEGIN PGP SIGNATURE-----\nVersion: OpenPGP.js v2.5.10\nComment:https://openpgpjs.org\n\nwsFcBAEBCAAQBQJaSPPeCRCYcC33miZm0gAAiksQANEZS3XjrWx2Ah7v8aqs\nZXl7zURE8HPQn/9cv7M2/2bV82+1Kpnzr1\nnPhigQS4w2a7o/29jcMyrW0Bh\nI8N0R76sF3jVKiEY4YY5WJHu4HRJWi\nA9roUJRYPpvJgPAsCQgDb8HZF0v4x\nus/KJrT38xKQiCzqYbQCacqkWv/JuHCS4UA2D0RvCNy/xJeb750xJE2quNv9\nhkjffwnH49R1tzOm9zDkXtoQYxPBmrKCW8iKDbRIDSTs15kVIlBsmUEISKQN\nRH6B30rZZXulsY0dJjE6ovzsuGbR/Em8TefMu5pOzE4jvflqOu3hsVIkx1ZE\nd1/YuuJmbBy8pFWaj5efnqpSgCcCSSCAquAfXu2arh7LMD2yIO+mYrhA2gEv\n+8Yd6CrkgTRzKCE8D22qylbmlppJRPIfAutspvKvZrETcfJTpzONVUiFCjxt\nMnU7t9mn+frItQ4fBrHqfJyfNfAppIWqqnPZvr0iUsO4v2+JzlkNx/OtFjr6\nx6msgK87MzGgVzNPoLAWo054IDIWMO7YVrg2sB6NpsbtDhXAmXytloLfjcCx\nBWrl9Cpm2SWkRADg8IAB8FPnqbARdwJtlSQgG6A5v7FXwKEwA41uVkAkVyZs\nuoDEY3yri1FZF1JPlDnKT8CrKYQijkj2BXHcvDBo66hvxbalNQZvzOb02W1r\nHlBb\n=b++B\n-----END PGP SIGNATURE-----
+</code></pre></div></div>
+<p>The example uses PGP signature considering its widespread use by email messaging systems. The signature can be substituted by RSA, DSA or EC signatures as well.</p>
+
+<h3 id="third-party-authentication">Third-party authentication</h3>
+<p>Host services can procure signed contracts from users to obtain or delegate access to third-party services. Contracts shall be signed within scope of the host service. These contracts can then be forwarded to the third-party service for token generation.</p>
+
+<p>Contracts are nothing but challenges that comply with a previously agreed upon structure. For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>host: 0x8.in
+delegate: twitter.com
+token: -----BEGIN PGP SIGNATURE-----\nVersion: OpenPGP.js v2.5.10\nComment:https://openpgpjs.org\n\nwsFcBAEBCAAQB.....
+</code></pre></div></div>
+
+<h2 id="security-measures">Security measures</h2>
+<p>Transactions signed with cryptographic signatures can seem permanent in nature.</p>
+
+<ol>
+  <li>Signed transactions need to be secured within the scope of a single host at all times.</li>
+  <li>Signed transactions should not be replayable even within the scope of a single host.</li>
+</ol>
+
+<p>Additional two parameters are prepended to all information being signed by the user.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>host: 0x8.in
+nonce: AzkiyxbYbnskb68B-1514731815897
+</code></pre></div></div>
+
+<ul>
+  <li>host: The root domain used by HTTP requests.</li>
+  <li>nonce: A random challenge previously agreed upon by the browser and the host. The challenge can have the same expiry as the browser session.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>The structure of identity and content ownership on the World Wide Web can be improved with the adoption of cryptographic proofs as a standard. The approach has proved fruitful for email signatures with PGP.</p>
+
+<p>Moreover, cryptographic identities can provide the necessary foundation for end-to-end encryption (E2EE) required to ensure security and privacy of users of the world wide web. Further, the experimental Web Crypto API<sup><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API">[3]</a></sup> could be leveraged to standardize cryptographic algorithms paired with a browser based key store interface.</p>
+
+<h2 id="references">References</h2>
+<ol>
+  <li><a href="https://tools.ietf.org/html/rfc2109">HTTP State Management Mechanism (rfc2109)</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen#Browser_compatibility">Keygen browser compatibility</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API">Web Crypto API</a></li>
+</ol>
 
 				</div>
+	
+				<div class="post__share">
+					<ul class="share__list list-reset">
+						<li class="share__item">
+							<a class="share__link share__facebook"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://0x8.in/blog/2017/12/30/web-crypto/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__twitter"
+								href="https://twitter.com/intent/tweet?text=Cryptographic%20Identities%20for%20the%20World%20Wide%20Web&url=https://0x8.in/blog/2017/12/30/web-crypto/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__pinterest"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2017/12/30/web-crypto/&amp;media=https://0x8.in/blog/images/&amp;description=Cryptographic%20Identities%20for%20the%20World%20Wide%20Web"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				 <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread" class="comments__article"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//hex8.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
+<!-- end comments --> 
+
+				<div class="widget-recent">
+					<h5 class="widget__title">Recommended for you</h5>
+					<div class="recent-box">
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2020/10/03/enterprise-serverless-azure/"
+										style="background-image: url('/blog/images/posts/enterprise-serverless-banner.png')"></a>
+								
+									<p class="recent-posts__title"><a href="/blog/2020/10/03/enterprise-serverless-azure/">Solving an Enterprise Integration problem with Azure Serverless</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/12/30/web-crypto/">Cryptographic Identities for the World Wide Web</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/06/18/blockchains-for-open-zero-rating-networks/">Blockchains for an Open Zero-rating network</a></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+<!--
+				<div class="widget-newsletter">
+					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
+					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
+					<form class="newsletter-form validate" action="//"
+						method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
+						<div class="newsletter-group">
+							<div class="newsletter-group-top">
+								<label class="screen-reader-text" for="mce-EMAIL">Enter your mail address</label>
+								<input class="newsletter-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Enten your mail">
+							</div>
+							<input class="newsletter-button" id="membedded-subscribe" type="submit" name="subscribe" value="Subscribe">
+						</div>
+					</form>
+				</div>
+-->	
 			</article>
-			<!-- end page -->
+			<!-- end post -->
 		</div>
 	</div>
 </div>

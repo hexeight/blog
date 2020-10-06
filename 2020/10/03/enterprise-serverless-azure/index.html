@@ -6,27 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>0x8 — Page not found</title>
-  <meta name='description' content='Breaking, building and everything in between.'>
+  <title>0x8 — Solving an Enterprise Integration problem with Azure Serverless</title>
+  <meta name='description' content='There are proven benefits of abstracting out servers for certain solutions where the focus lies more on the business logic and lesser on the logistics of it....'>
 
-  <link rel="canonical" href="https://0x8.in/blog/404.html">
+  <link rel="canonical" href="https://0x8.in/blog/2020/10/03/enterprise-serverless-azure/">
   <link rel="alternate" type="application/rss+xml" title="0x8" href="/blog/feed.xml">
 
-  <meta name="title" content="Page not found">
-  <meta name="description" content="Breaking, building and everything in between.">
+  <meta name="title" content="Solving an Enterprise Integration problem with Azure Serverless">
+  <meta name="description" content="There are proven benefits of abstracting out servers for certain solutions where the focus lies more on the business logic and lesser on the logistics of it....">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://0x8.in/blog/404.html">
-  <meta property="og:title" content="0x8 — Page not found">
-  <meta name="description" content="Breaking, building and everything in between.">
-  <meta property="og:image" content="images/03.jpg">
+  <meta property="og:url" content="https://0x8.in/blog/2020/10/03/enterprise-serverless-azure/">
+  <meta property="og:title" content="0x8 — Solving an Enterprise Integration problem with Azure Serverless">
+  <meta name="description" content="There are proven benefits of abstracting out servers for certain solutions where the focus lies more on the business logic and lesser on the logistics of it....">
+  <meta property="og:image" content="/images/posts/enterprise-serverless-banner.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://0x8.in/blog/404.html">
-<meta property="twitter:title" content="0x8 — Page not found">
-<meta property="twitter:description" content="Breaking, building and everything in between.">
-<meta property="twitter:image" content="images/03.jpg">
+<meta property="twitter:url" content="https://0x8.in/blog/2020/10/03/enterprise-serverless-azure/">
+<meta property="twitter:title" content="0x8 — Solving an Enterprise Integration problem with Azure Serverless">
+<meta property="twitter:description" content="There are proven benefits of abstracting out servers for certain solutions where the focus lies more on the business logic and lesser on the logistics of it....">
+<meta property="twitter:image" content="/images/posts/enterprise-serverless-banner.png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
@@ -251,7 +251,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			<h1 class="page__title wow fadeInUp">Page not found</h1>
+			
+			<div class="post__head wow fadeInUp">
+				<h1 class="post__title">Solving an Enterprise Integration problem with Azure Serverless</h1>
+				<div class="post-info">
+					
+					<span class="post-tags">
+						posted in
+						
+							<a href="/blog/tag/serverless" class="post-tags__tag">serverless</a>
+						
+							<a href="/blog/tag/azure" class="post-tags__tag">azure</a>
+						
+							<a href="/blog/tag/enterprise" class="post-tags__tag">enterprise</a>
+						
+							<a href="/blog/tag/integration" class="post-tags__tag">integration</a>
+						
+					</span>
+					
+					<span class="post__meta">
+						<span class="post__date"> on <a href="/blog">
+							<time datetime="2020-10-03T00:00:00+05:30">Oct 03, 2020</time></a>
+						</span>
+						<span class="article__author"> by <a href="/blog/about/">Omkar Khair</a></span>
+					</span>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
@@ -259,25 +285,367 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <div class="container">
 	<div class="row">
 		<div class="col col-12">
-			<!-- begin page -->
-			<article class="page wow fadeInUp" data-wow-delay=".2s">
-					
-					<div class="page-image" style="background-image: url('/blog/images/03.jpg')"></div>
-				
-				<div class="page__content">
-					<div class="container">
-  <div class="row">
-    <div class="col col-12" style="text-align: center">
-      <h2>404</h2>
-      <p>The requested page could not be found.</p>
-      <p><i class="ion ion-md-arrow-back"></i> <a href="/blog/">Back to the blog</a></p>
-    </div>
-  </div>
-</div>
+			
+			<!-- begin post -->
+			<article class="post wow fadeInUp" data-wow-delay=".2s">
+	
+			
+				<div class="post-image" style="background-image: url('/blog/images/posts/enterprise-serverless-banner.png')"></div>
+			
+	
+				<div class="post__content">
+					<p>There are proven benefits of abstracting out servers for certain solutions where the focus lies more on the business logic and lesser on the logistics of it.<sup><a href="#reference-1">[1]</a><a href="#reference-2">[2]</a><a href="#reference-3">[3]</a></sup> Serverless offerings are modelled for simplicity, but this can quickly lead to limitations especially while building enterprise focused solutions surrounded by niche requirements or compliances. Azure seems to have clearly inherited Microsoft’s proficiency in catering to Enterprise needs. Azure’s serverless offerings have managed to extend an array of features that help build compliant solutions with fair degree of ease. To evaluate just that, here we look at an Enterprise Integration problem and design a solution using Azure’s serverless offerings and highlight some of their capabilities.</p>
+
+<blockquote>
+  <h1 id="problem-statement">Problem statement</h1>
+  <p>North Wind Corp. runs an ERP solution where Request for Proposals (RFP) are uploaded for Vendors to access. North Wind wants to send out notifications to suppliers when they intend to raise RFPs. Vendors like Proseware Inc. would like to stay up to date on RFP events and trigger their internal business processes.</p>
+</blockquote>
+
+<p>For the sake of simplicity, let’s break this problem statement down to three phases and address each of them with one of Azure’s serverless offerings.</p>
+
+<h1 id="separation-of-concerns"><a name="separation-of-concerns" href="#separation-of-concerns">Separation of Concerns</a></h1>
+<p>This is a cross-enterprise integration scenario. It is therefore important to understand that the solution needs to have clear separation of concerns between the two parties, North Wind and Proseware.</p>
+
+<ul>
+  <li>North Wind’s sole responsibility should be to issue the RFP notifications to all vendors along with relevant metadata.</li>
+  <li>Proseware and other vendors should be able to manage and route their own subscriptions.</li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+<p>North Wind is required to set up a notification infrastructure that its vendors can subscribe to. It is crucial for this infrastructure to support access for vendors to manage their own subscriptions.</p>
+
+<p>RFP Notification being an event, Azure’s Event Grid starts to seem like a good candidate. <a href="https://azure.microsoft.com/en-us/services/event-grid/">Event Grid</a> is designed to be used in event-based architectures where applications can emit events. Other applications and services can then subscribe to events of their interest. The general Event Hub offering supports deep integration with Azure allowing your Azure resources to readily start emitting event on the grid. The support for filters is also a huge plus especially for applications that would like to focus on a very specific range of events. If you are interested in a detailed overview, I would encourage you to read up if their <a href="https://docs.microsoft.com/en-us/azure/event-grid/overview">Azure documentation</a>.</p>
+
+<p><em>If you want to improve your understanding of the key differences between Event Hubs, Event Grid and in some cases Service Bus head here <a href="https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services">https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services</a>.<sup><a href="#reference-4">[4]</a></sup></em></p>
+
+<p>We can approach a design where we create a topic dedicated for RFP notifications, but RBAC on the topic would not control vendors from accessing each other’s topic subscriptions. We can create a custom topic for each vendor allowing them to control all subscriptions on that topic. As each topic will have its own event publishing endpoint, North Wind’s internal ERP system will have to emit notifications on each topic endpoint. There should be a better approach.</p>
+
+<p>All of the above constrains can be gracefully bypassed with <strong><a href="https://docs.microsoft.com/en-us/azure/event-grid/event-domains">Event Domains</a></strong>. Extending the same Event Grid infrastructure, domains allow applications to <a href="https://docs.microsoft.com/en-us/azure/event-grid/event-domains#publishing-to-an-event-domain">emit events across multiple topics over the same endpoint</a> and at the same time <a href="https://docs.microsoft.com/en-us/azure/event-grid/event-domains#access-management">allow RBAC to be applied on each topic created under the domain</a><sup><a href="#reference-5">[5]</a></sup>. We can therefore have a dedicated topic for each vendor under the Event Domain and assign the <code class="language-plaintext highlighter-rouge">EventGrid EventSubscription Contributor</code> role to Integration teams at vendors like Proseware. <em>Note that this role is not visible in the Azure Portal at the time of writing. This role can be assigned via PowerShell.</em></p>
+
+<p><img src="/blog/images/posts/contoso-construction-example.png" alt="" />
+<em>Source: Example of topic based access from Azure Documentation - <a href="https://docs.microsoft.com/en-us/azure/event-grid/event-domains">Event Domains</a></em></p>
+
+<p>There is still one last caveat here. The event size on Event Grid is limited to 1 MB (messages are metered at 64 KB)<sup>[<a href="#reference-6">6</a>]</sup>. There can be RFPs larger than 1 MB and contain multimedia which is not suitable for the JSON schema supported by Event Grid. Even from a design stand point, the Event object should contain only enough metadata for the vendor to be able to locate the actual RFP and consume it into their processes. The location for the actual RFP is trivial to the problem statement as it could very well be in the ERP itself with authorized vendors allowed to pull information. For the sake of brevity, we opt for a Blob storage. We utilize the data property in the Event Grid schema to populate RFP metadata.</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"topic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"proseware"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rfp/new"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11568938"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"eventTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-02T13:41:00.9584103Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN934NZ12"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xml"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://northwind.blob.core.windows.net/trader-rfps/rfp.xml"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"dataVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadataVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>The RFP XML document hosted on the North Wind blob storage is structured as follows.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;root&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Intent to create the largest Lego Death Star<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;id&gt;</span>IN934NZ11<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;type&gt;</span>M582<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;orders&gt;</span>
+        <span class="nt">&lt;order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Darth Vader<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;quantity&gt;</span>1<span class="nt">&lt;/quantity&gt;</span>
+        <span class="nt">&lt;/order&gt;</span>
+        <span class="nt">&lt;order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Storm troopers<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;quantity&gt;</span>60<span class="nt">&lt;/quantity&gt;</span>
+        <span class="nt">&lt;/order&gt;</span>
+        <span class="nt">&lt;order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Emperor's Royal Guards<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;quantity&gt;</span>20<span class="nt">&lt;/quantity&gt;</span>
+        <span class="nt">&lt;/order&gt;</span>
+        <span class="nt">&lt;order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Square blocks<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;quantity&gt;</span>80000000<span class="nt">&lt;/quantity&gt;</span>
+        <span class="nt">&lt;/order&gt;</span>
+        <span class="nt">&lt;order&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Blasters<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;quantity&gt;</span>176<span class="nt">&lt;/quantity&gt;</span>
+        <span class="nt">&lt;/order&gt;</span>
+    <span class="nt">&lt;/orders&gt;</span>
+    <span class="nt">&lt;note&gt;</span>Vendor to take care of shipping and other logistics.<span class="nt">&lt;/note&gt;</span>
+<span class="nt">&lt;/root&gt;</span></code></pre></figure>
+
+<p>The solution at this point looks something like this. We have everything in place to:</p>
+<ol>
+  <li>Emit events to a single endpoint.</li>
+  <li>Provide isolated control for each vendor’s Active Directory backed guest users to setup event subscriptions on their own topics.</li>
+</ol>
+
+<p><img src="/blog/images/posts/Azure Serverless Enterprise Integration-1.png" alt="" />
+<em>Separation of Concerns between North Wind and Proseware.</em></p>
+
+<h1 id="integration-point"><a name="integration-point" href="#integration-point">Integration Point</a></h1>
+<p>Proseware, like most businesses operates its own enterprise solutions protected within a private network. The RFP notification should be received by a gateway service that can securely transfer and host the corresponding RFP document within the Proseware network to be picked up by one or more internal business processes. <em>We assume that Proseware’s private network is extended into Azure using either a Site-to-site VPN or ExpressRoute.</em></p>
+
+<h2 id="solution-1">Solution</h2>
+<p>Here we play the role of the Integration team at Proseware. We would like to future-proof the solution by creating a single internal integration point where one or more business applications running within the corporate network can pick the RFP for further processing. Simplifying it by storing the RFP in a Blob storage that can be accessed through the Proseware VNET.</p>
+
+<p>We can setup a subscription on the Event Grid Topic. For event destinations, Event Grid supports Webhooks or Azure resources like Functions, Storage Queues, Event Hubs, Hybrid Connections or Service Bus. As this is a cross-enterprise integration scenario (Proseware and North Wind have separate Azure Subscriptions) we won’t be able to use the deep integrated Azure event destinations supported by Event Grid. That narrows down our choice to Webhooks.</p>
+
+<p>The webhook subscription needs to point to a web service capable of doing the following.</p>
+<ol>
+  <li>Receive the webhook notification on a HTTP endpoint.</li>
+  <li>Parse the JSON based Event Grid schema to extract the RFP location on North Wind’s storage account.</li>
+  <li>Download the RFP from the North Wind storage account and place it on a Proseware storage account that can be accessed only via a VNET.</li>
+</ol>
+
+<p>It is important to understand that Event Grid requires a notification confirmation within 30 seconds. In our case, the HTTP endpoint should be able to respond quickly. The design needs to ensure that RFP downloads in step 3 should not block the HTTP response as the downloads especially in case of batch events might take longer. Also note that this case does not require step 3 to make an authenticated call to fetch the RFP document from North Wind, we would like to use an approach that could be extended to support a custom authentication mechanism.</p>
+
+<p><strong><a href="https://azure.microsoft.com/en-us/services/functions/">Azure Functions</a></strong> app with a HTTP trigger works well for us here. The ability to implement just the business logic in languages like C#, Python, PowerShell and JavaScript allows us to extend the functionality if needed. We are going to require access to the Proseware VNET, for which the Function app can be hosted on a Premium plan or a dedicated App Service Plan or App Service Environment which allow VNET integration. Here we opt for the App Service Plan as any spare compute can be shared by other functions apps or app services. If you prefer to benefit from serverless scaling, Premium Plan would be the way to go.<sup><a href="#reference-7">[7]</a></sup></p>
+
+<p>With Functions are now able to implement the service with minimal code (<a href="https://github.com/hexeight/azure-labs/tree/main/enterprise-serverless/integration-point">complete solution</a>).We can leverage the <a href="https://docs.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview">Durable Functions</a> extension to implement asynchronous activities in the functions app. The webhook can be pointed a HTTP trigger that initializes an orchestrator instance. The orchestrator can then use the fan-out/fan-in pattern to download each RFP in the list of events individually without blocking the webhook response.</p>
+
+<figure class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"RFPNotificationOrchestrator"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">dynamic</span><span class="p">&gt;</span> <span class="nf">RunOrchestrator</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">OrchestrationTrigger</span><span class="p">]</span> <span class="n">IDurableOrchestrationContext</span> <span class="n">context</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">EventGridEvent</span><span class="p">&gt;</span> <span class="n">events</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">GetInput</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">EventGridEvent</span><span class="p">&gt;&gt;();</span>
+    <span class="kt">var</span> <span class="n">tasks</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;&gt;();</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="n">EventGridEvent</span> <span class="n">e</span> <span class="k">in</span> <span class="n">events</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="n">tasks</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">CallActivityAsync</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;(</span><span class="s">"DownloadRFP"</span><span class="p">,</span> <span class="n">e</span><span class="p">));</span>
+    <span class="p">}</span>
+    
+    <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">WhenAll</span><span class="p">(</span><span class="n">tasks</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">from</span> <span class="n">t</span> <span class="k">in</span> <span class="n">tasks</span> <span class="k">select</span> <span class="k">new</span> <span class="p">{</span> <span class="n">TaskId</span> <span class="p">=</span> <span class="n">t</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">Status</span> <span class="p">=</span> <span class="n">t</span><span class="p">.</span><span class="n">Result</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"DownloadRFP"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="nf">DownloadRFP</span><span class="p">([</span><span class="n">ActivityTrigger</span><span class="p">]</span> <span class="n">EventGridEvent</span> <span class="n">e</span><span class="p">,</span>
+<span class="p">[</span><span class="nf">Blob</span><span class="p">(</span><span class="s">"northwind-rfp-collection"</span><span class="p">,</span> <span class="n">Connection</span> <span class="p">=</span> <span class="s">"RFPStorageConnection"</span><span class="p">)]</span> <span class="n">CloudBlobContainer</span> <span class="n">blobContainer</span><span class="p">,</span>
+<span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Processing event {0}."</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+    <span class="c1">// Check if event is for Webhook registration - https://docs.microsoft.com/en-us/azure/event-grid/webhook-event-delivery#validation-details
+</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">EventType</span> <span class="p">==</span> <span class="s">"Microsoft.EventGrid.SubscriptionValidationEvent"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">EventGridValidation</span> <span class="n">validationObject</span> <span class="p">=</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span> <span class="k">as</span> <span class="n">JObject</span><span class="p">).</span><span class="n">ToObject</span><span class="p">&lt;</span><span class="n">EventGridValidation</span><span class="p">&gt;();</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Validation URL: {0}"</span><span class="p">,</span> <span class="n">validationObject</span><span class="p">.</span><span class="n">validationUrl</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">RFPDescriptor</span> <span class="n">descriptor</span> <span class="p">=</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span> <span class="k">as</span> <span class="n">JObject</span><span class="p">).</span><span class="n">ToObject</span><span class="p">&lt;</span><span class="n">RFPDescriptor</span><span class="p">&gt;();</span>
+    <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Downloading RFP document ID {0} from North Wind"</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_httpClient</span><span class="p">.</span><span class="nf">GetAsync</span><span class="p">(</span><span class="n">descriptor</span><span class="p">.</span><span class="n">xml</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">responseString</span> <span class="p">=</span> <span class="k">await</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="nf">ReadAsStringAsync</span><span class="p">();</span>
+
+    <span class="c1">// Store RFP to Blob Storage
+</span>
+    <span class="kt">string</span> <span class="n">blobName</span> <span class="p">=</span> <span class="n">String</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="s">"{0}.xml"</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+    <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Uploading RFP document ID {0} to internal storage"</span><span class="p">,</span> <span class="n">descriptor</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+    <span class="n">CloudBlockBlob</span> <span class="n">blob</span> <span class="p">=</span> <span class="n">blobContainer</span><span class="p">.</span><span class="nf">GetBlockBlobReference</span><span class="p">(</span><span class="n">blobName</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">blob</span><span class="p">.</span><span class="nf">UploadTextAsync</span><span class="p">(</span><span class="n">responseString</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>After implementing the integration point, Proseware is able to grant internal business processes access to the Blob storage to pick up fresh RFPs coming in from North Wind.</p>
+
+<p><img src="/blog/images/posts/Azure Serverless Enterprise Integration-2.png" alt="" />
+<em>Proseware’s Integration Point to North Wind’s RFPs</em></p>
+
+<h1 id="evolving-processes"><a name="evolving-processes" href="#evolving-processes">Evolving processes</a></h1>
+<p>Businesses units like Sales, within Proseware would like to own and control their processes to reduce operational overheads. The solution needs to provide enough flexibility for the business process to evolve quickly. To begin with, the sales team would like to receive an email notification when a RFP is uploaded to the Proseware RFP Store (Blob storage). The email should include the specifics mentioned in the XML document in human readable format.</p>
+
+<h1 id="solution-2">Solution</h1>
+<p>Considering that businesses would like to own and control the process here, it is ideal to pursue a low-code or no-code solution that businesses can easily maintain. The flexibility offered by Power Platform for such cases is incredible. But we are dealing with a scenario where RFPs are stored in a Blob storage controlled by Proseware with a private network.</p>
+
+<p>Logic Apps on Azure could help, but they do not normally offer VNET integration that would allow us to access the Proseware Blob storage. However, a Logic App can be hosted in an <a href="https://azure.microsoft.com/en-us/updates/integration-service-environments-ise-are-now-generally-available/">Integrated Service Environment (ISE)</a> - an offering from Azure specifically tailored for Logic Apps which offer the same level of resource isolation that App Service Environments (ASE) offer for App Services. This comes along with the ability to run specific actions with the ISE and leverage the provided VNET integration<sup><a href="#reference-8">[8]</a></sup>.</p>
+
+<p><img src="/blog/images/posts/logic-app-ise.png" alt="" />
+<em>Actions marked as CORE and ISE are executed in the ISE.</em></p>
+
+<p>Further, we need to parse the XML file and extract the RFP specifications and place it in an email. This is where the Enterprise Integration Pack (EIP) comes in handy. It is important to note that <a href="https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-enterprise-integration-overview">EIP offers much more</a> than just XML parsing. With EIP, an integration account can be used to store mapping instructions in form of Liquid templates, XSLT or HIDX. For XML to text, we will use the following Liquid template. You can learn more about Liquid <a href="https://shopify.github.io/liquid/">here</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello team,
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+North Wind has issued a notification requesting proposals against the following order.
+&lt;br/&gt;&lt;br/&gt;
+-----------------------------------------------------------------------&lt;br/&gt;
+Title: {{content.title}}&lt;br/&gt;
+ID: {{content.id}}&lt;br/&gt;
+Type: {{content.type}}&lt;br/&gt;
+&lt;br/&gt;&lt;br/&gt;
+Order details:&lt;br/&gt;
+{% for order in content.orders %}&lt;br/&gt;
+{{order.name}} x {{order.quantity}}&lt;br/&gt;
+{% endfor %}&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+{{content.note}}&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+-----------------------------------------------------------------------&lt;br/&gt;
+Please follow up at the earliest.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+
+
+Kind regards,&lt;br/&gt;
+Proseware Integration Team&lt;br/&gt;
+</code></pre></div></div>
+
+<p>If we use this template against the sample North Wind RFP XML, the end result looks like this.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello team,
+
+North Wind has issued a notification requesting proposals against the following order.
+
+-----------------------------------------------------------------------
+Title: Intent to create the largest Lego Death Star
+ID: IN934NZ11
+Type: M582
+
+Order details:
+
+Darth Vader x 1
+
+Storm troopers x 60
+
+Emperor's Royal Guards x 20
+
+Square blocks x 80000000
+
+Blasters x 176
+
+Vendor to take care of shipping and other logistics.
+
+-----------------------------------------------------------------------
+Please follow up at the earliest.
+
+Kind regards,
+Proseware Integration Team
+</code></pre></div></div>
+
+<p>We implement the following steps in the Logic App, starting with a blob file trigger followed by mapping the XML into text using the above template. The text is then sent over email to the sales team.</p>
+
+<p><img src="/blog/images/posts/logic-app-flow.png" alt="" />
+<em>Logic App</em></p>
+
+<p>With the full solution in order, we achieve the following:</p>
+<ol>
+  <li>North Wind’s ERP is able to publish events for vendors to consume.</li>
+  <li>Vendors like Proseware are able to create and manage their own subscriptions.</li>
+  <li>Proseware is able to pick RFP documents and make them accessible to internal processes.</li>
+  <li>The Sales team at Proseware is able to control and setup their own process like receiving emails with RFP details from North Wind.</li>
+</ol>
+
+<p><img src="/blog/images/posts/Azure Serverless Enterprise Integration-3.png" alt="" />
+<em>Evolving Process</em></p>
+
+<h2 id="disclaimer">Disclaimer</h2>
+<p>The solution above is prepared with the intention to focus on the key serverless offerings from Azure. The reader is requested to revisit design decisions when building solutions to address their own requirements.</p>
+
+<h2 id="references">References</h2>
+<ol>
+  <li><a name="reference-1"></a><a href="https://customers.microsoft.com/en-in/story/stylelabs-media-telco-azure">Marketing software company gives customers greater flexibility using serverless functions</a></li>
+  <li><a name="reference-2"></a><a href="https://customers.microsoft.com/en-in/story/relativity-partner-professional-services-azure">E-discovery company uses serverless computing to speed internal development of its SaaS solution</a></li>
+  <li><a name="reference-3"></a><a href="https://burkeholland.github.io/posts/the-urlist/">The Urlist — An application study in Serverless and Azure</a></li>
+  <li><a name="reference-4"></a><a href="https://docs.microsoft.com/en-us/azure/event-grid/compare-messaging-services">Choose between Azure messaging services - Event Grid, Event Hubs, and Service Bus</a></li>
+  <li><a name="reference-5"></a><a href="https://docs.microsoft.com/en-us/azure/event-grid/event-domains">Azure Documentation - Event Grid Domains</a></li>
+  <li><a name="reference-6"></a><a href="https://docs.microsoft.com/en-us/azure/event-grid/quotas-limits">Event Grid - Quotas and Limits</a></li>
+  <li><a name="reference-7"></a><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale">Azure Functions - Scale</a></li>
+  <li><a name="reference-8"></a><a href="https://docs.microsoft.com/en-us/azure/logic-apps/connect-virtual-network-vnet-isolated-environment">Connect to Azure virtual networks from Azure Logic Apps by using an integration service environment (ISE)</a></li>
+</ol>
 
 				</div>
+	
+				<div class="post__share">
+					<ul class="share__list list-reset">
+						<li class="share__item">
+							<a class="share__link share__facebook"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://0x8.in/blog/2020/10/03/enterprise-serverless-azure/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__twitter"
+								href="https://twitter.com/intent/tweet?text=Solving%20an%20Enterprise%20Integration%20problem%20with%20Azure%20Serverless&url=https://0x8.in/blog/2020/10/03/enterprise-serverless-azure/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__pinterest"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2020/10/03/enterprise-serverless-azure/&amp;media=https://0x8.in/blog/images//images/posts/enterprise-serverless-banner.png&amp;description=Solving%20an%20Enterprise%20Integration%20problem%20with%20Azure%20Serverless"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				 <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread" class="comments__article"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//hex8.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+</div>
+<!-- end comments --> 
+
+				<div class="widget-recent">
+					<h5 class="widget__title">Recommended for you</h5>
+					<div class="recent-box">
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2020/10/03/enterprise-serverless-azure/"
+										style="background-image: url('/blog/images/posts/enterprise-serverless-banner.png')"></a>
+								
+									<p class="recent-posts__title"><a href="/blog/2020/10/03/enterprise-serverless-azure/">Solving an Enterprise Integration problem with Azure Serverless</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/12/30/web-crypto/">Cryptographic Identities for the World Wide Web</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/06/18/blockchains-for-open-zero-rating-networks/">Blockchains for an Open Zero-rating network</a></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+<!--
+				<div class="widget-newsletter">
+					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
+					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
+					<form class="newsletter-form validate" action="//"
+						method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
+						<div class="newsletter-group">
+							<div class="newsletter-group-top">
+								<label class="screen-reader-text" for="mce-EMAIL">Enter your mail address</label>
+								<input class="newsletter-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Enten your mail">
+							</div>
+							<input class="newsletter-button" id="membedded-subscribe" type="submit" name="subscribe" value="Subscribe">
+						</div>
+					</form>
+				</div>
+-->	
 			</article>
-			<!-- end page -->
+			<!-- end post -->
 		</div>
 	</div>
 </div>
