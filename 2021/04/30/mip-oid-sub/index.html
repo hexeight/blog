@@ -6,26 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>0x8</title>
-  <meta name='description' content='Breaking, building and everything in between.'>
+  <title>0x8 — Identifying a unique user on Microsoft Identity Platform - OID vs SUB</title>
+  <meta name='description' content='There is more than one way to identify a unqiue user based on JWT tokens passed on by Microsoft Identity Platform. Find out which one would work best for you.'>
 
-  <link rel="canonical" href="https://0x8.in/blog/tag/entropy/">
+  <link rel="canonical" href="https://0x8.in/blog/2021/04/30/mip-oid-sub/">
   <link rel="alternate" type="application/rss+xml" title="0x8" href="/blog/feed.xml">
 
-  <meta name="title" content="">
-  <meta name="description" content="Breaking, building and everything in between.">
+  <meta name="title" content="Identifying a unique user on Microsoft Identity Platform - OID vs SUB">
+  <meta name="description" content="There is more than one way to identify a unqiue user based on JWT tokens passed on by Microsoft Identity Platform. Find out which one would work best for you.">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://0x8.in/blog/tag/entropy/">
-  <meta property="og:title" content="0x8">
-  <meta name="description" content="Breaking, building and everything in between.">
+  <meta property="og:url" content="https://0x8.in/blog/2021/04/30/mip-oid-sub/">
+  <meta property="og:title" content="0x8 — Identifying a unique user on Microsoft Identity Platform - OID vs SUB">
+  <meta name="description" content="There is more than one way to identify a unqiue user based on JWT tokens passed on by Microsoft Identity Platform. Find out which one would work best for you.">
   <meta property="og:image" content="/blog/images/craft.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://0x8.in/blog/tag/entropy/">
-<meta property="twitter:title" content="0x8">
-<meta property="twitter:description" content="Breaking, building and everything in between.">
+<meta property="twitter:url" content="https://0x8.in/blog/2021/04/30/mip-oid-sub/">
+<meta property="twitter:title" content="0x8 — Identifying a unique user on Microsoft Identity Platform - OID vs SUB">
+<meta property="twitter:description" content="There is more than one way to identify a unqiue user based on JWT tokens passed on by Microsoft Identity Platform. Find out which one would work best for you.">
 <meta property="twitter:image" content="/blog/images/craft.png">
 
   <!-- Fonts -->
@@ -265,52 +265,181 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <!-- begin wrapper-page -->
     <div class="wrapper-page">
       <div class="container">
-  <div class="row">
-    <div class="col col-12">
-      <h1 class="archive-title">entropy</h1>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col col-12">
+			
+			<div class="post__head wow fadeInUp">
+				<h1 class="post__title">Identifying a unique user on Microsoft Identity Platform - OID vs SUB</h1>
+				<div class="post-info">
+					
+					<span class="post-tags">
+						posted in
+						
+							<a href="/blog/tag/microsoft" class="post-tags__tag">microsoft</a>
+						
+							<a href="/blog/tag/identity" class="post-tags__tag">identity</a>
+						
+							<a href="/blog/tag/platform" class="post-tags__tag">platform</a>
+						
+							<a href="/blog/tag/azure" class="post-tags__tag">azure</a>
+						
+							<a href="/blog/tag/enterprise" class="post-tags__tag">enterprise</a>
+						
+							<a href="/blog/tag/active directory" class="post-tags__tag">active directory</a>
+						
+					</span>
+					
+					<span class="post__meta">
+						<span class="post__date"> on <a href="/blog">
+							<time datetime="2021-04-30T00:00:00+05:30">Apr 30, 2021</time></a>
+						</span>
+						<span class="article__author"> by <a href="/blog/about/">Omkar Khair</a></span>
+					</span>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </div>
 
 <div class="container">
-  <div class="row">
-    
-      <div class="col col-12">
-  <!-- begin article -->
-  <div class="article wow fadeIn">
-    <div class="article__content">
-      <h2 class="article__title">
-        <a href="/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/">Cryptography, Entropy and the art of not winning a lottery ticket</a>
-      </h2>
-      <p class="article__excerpt">With the new kids in town called “Blockchains”, I have ended up spending weeks if not months to really get a grip on how things function under the hood; and of the many, many, many things I learnt – I found one aspect of asymmetric cryptography th...</p>
-      <div class="article-info">
-        
-          <span class="article__tags">
-            posted in
-            
-              <a href="/blog/tag/blockchain" class="article__tag">blockchain</a>
-            
-              <a href="/blog/tag/cryptography" class="article__tag">cryptography</a>
-            
-              <a href="/blog/tag/ecdsa" class="article__tag">ecdsa</a>
-            
-              <a href="/blog/tag/entropy" class="article__tag">entropy</a>
-            
-              <a href="/blog/tag/rsa" class="article__tag">rsa</a>
-            
-          </span>
-        
-        <span class="article__meta">
-          <span class="article__date"> on <a href="/blog/2017/04/29/cryptography-entropy-and-the-art-of-not-winning-a-lottery-ticket/"><time datetime="2017-04-30T04:29:18+05:30">April 30, 2017</time></a></span>
-          <span class="article__author"> by <a href="/blog/about/">Omkar Khair</a></span>
-        </span>
-      </div>
-    </div>
-  </div>
-  <!-- end article -->
+	<div class="row">
+		<div class="col col-12">
+			
+			<!-- begin post -->
+			<article class="post wow fadeInUp" data-wow-delay=".2s">
+	
+			
+	
+				<div class="post__content">
+					<p>I happened to spend a decent part of 2021 skimming through Microsoft documentation along with OAuth and associated RFCs to understand the specifics of authorization flows to secure APIs. On one such quest, I was to figure out a good way to identify a unique user from a JWT token passed on by Microsoft Identity Plaftform. Now to be clear, the problem wasn’t lack of a way to do so; rather multiple ways. Some outright wrong, some more right than others depending on what you really want to achieve. So let’s take a look. There’s a <a href="#tldr">TL;DR</a> right below.</p>
+
+<h2 id="some-basics">Some basics</h2>
+<p>The title already tells you that there are two claims in a JWT token that we are most interested in. For those who haven’t had their essential visit to the <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens#payload-claims">Microsoft Access Token</a> or <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/id-tokens#using-claims-to-reliably-identify-a-user-subject-and-object-id">ID Token</a> documentation - UPN, Email or Phone numbers aren’t guaranteed to be unique system wide. UPN (User Principal Name) especially misleads devs into assuming uniqueness.</p>
+
+<p>The only two eligible candidates for guaranting unique values within a tenant are OID and SUB.</p>
+
+<h1 id="oid-vs-sub">OID vs SUB</h1>
+<p>This is what you are here for. Both of these claims guarantee uniqueness. There are subtle differences like the degree of uniqueness that these values provide.</p>
+
+<h2 id="object-identifier-claim-oid">Object Identifier Claim (OID)</h2>
+<p>In context of Microsoft Identity Platform this property maps directly to Object Identifier in the directory. For Enterprise applications integrating with Microsoft services, this becomes the easy choice. This property guarantees uniqueness in general. However, pairing the OID with TID (Tenant ID) provides additional defence against an accidental GUID collision.</p>
+
+<p>By design, for the same user on different tenants (as a guest user), applications will get a different identifier. This is to protect a user’s directory or application information on a tenant from being mapped to another tenant.</p>
+
+<p>However, a user from the same tenant appearing on multiple applications will share that same OID. This has prompted Microsoft to enforce apps to have the <code class="language-plaintext highlighter-rouge">profile</code> scope enabled to obtain this claim for users.</p>
+
+<p>It is also important to note that OID does not find place in the JWT RFC (<a href="https://datatracker.ietf.org/doc/html/rfc7519">rfc7519</a>). So if your application accepts tokens from multiple Identity Providers, OID might NOT be your best choice.</p>
+
+<h2 id="subject-claim-sub">Subject Claim (SUB)</h2>
+<p>The subject claim is guaranteed to be unique within a tenant and within the application as well. Meaning that the same user appearing on two different applications will use a different SUB value. This makes it difficult for applications to map a user’s data across two different applications. This is highly advantageous for applications that would like to meet high privacy standards.</p>
+
+<p>Additionaly, SUB is supported via the JWT token RFC (<a href="https://datatracker.ietf.org/doc/html/rfc7519#section-4.1.2">rfc7519</a>). Meaning, every Identity Provider passing on JWT tokens is bound to provide a SUB claim that is populated with a unique value per user. If you are looking at extending support to multiple Identity Providers, SUB would be your best choice.</p>
+
+<h4 id="tldr"><a name="tldr" href="#tldr">TL;DR</a></h4>
+<ul>
+  <li>OID works best for applications that are looking to integrate exclusively with the Microsoft Identity Platform.</li>
+  <li>OID works best if applications rely on the directory identifier to integrate with other applications.</li>
+  <li>SUB works best for applications aiming to serve high privacy standards.</li>
+  <li>SUB works best for applications that are looking to integrate with multiple identity providers serving fully complaint JWTs.</li>
+</ul>
+
+				</div>
+	
+				<div class="post__share">
+					<ul class="share__list list-reset">
+						<li class="share__item">
+							<a class="share__link share__facebook"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://0x8.in/blog/2021/04/30/mip-oid-sub/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__twitter"
+								href="https://twitter.com/intent/tweet?text=Identifying%20a%20unique%20user%20on%20Microsoft%20Identity%20Platform%20-%20OID%20vs%20SUB&url=https://0x8.in/blog/2021/04/30/mip-oid-sub/"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+						</li>
+					
+						<li class="share__item">
+							<a class="share__link share__pinterest"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/04/30/mip-oid-sub/&amp;media=https://0x8.in/blog/images/&amp;description=Identifying%20a%20unique%20user%20on%20Microsoft%20Identity%20Platform%20-%20OID%20vs%20SUB"
+								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+						</li>
+					</ul>
+				</div>
+
+				 <!-- begin comments -->
+<div class="comments">
+  <div id="disqus_thread" class="comments__article"></div>
+  <script>
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = '//hex8.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
 </div>
-    
-  </div>
+<!-- end comments --> 
+
+				<div class="widget-recent">
+					<h5 class="widget__title">Recommended for you</h5>
+					<div class="recent-box">
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2021/04/30/mip-oid-sub/">Identifying a unique user on Microsoft Identity Platform - OID vs SUB</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2020/10/03/enterprise-serverless-azure/"
+										style="background-image: url('/blog/images/posts/enterprise-serverless-banner.png')"></a>
+								
+									<p class="recent-posts__title"><a href="/blog/2020/10/03/enterprise-serverless-azure/">Solving an Enterprise Integration problem with Azure Serverless</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+								
+									<p class="recent-posts__title"><a href="/blog/2017/12/30/web-crypto/">Cryptographic Identities for the World Wide Web</a></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+<!--
+				<div class="widget-newsletter">
+					<h5 class="newsletter-title wow fadeInUp">Get Interesting News</h5>
+					<div class="newsletter-subtitle wow fadeInUp" data-wow-delay=".2s">Stay up to date! Get all the latest & gretest posts delivered straight to your inbox</div>
+					<form class="newsletter-form validate" action="//"
+						method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
+						<div class="newsletter-group">
+							<div class="newsletter-group-top">
+								<label class="screen-reader-text" for="mce-EMAIL">Enter your mail address</label>
+								<input class="newsletter-email required email" id="mce-EMAIL" type="text" name="EMAIL" placeholder="Enten your mail">
+							</div>
+							<input class="newsletter-button" id="membedded-subscribe" type="submit" name="subscribe" value="Subscribe">
+						</div>
+					</form>
+				</div>
+-->	
+			</article>
+			<!-- end post -->
+		</div>
+	</div>
 </div>
     </div>
     <!-- end wrapper-page -->

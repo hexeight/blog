@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Identifying a unique user on Microsoft Identity Platform - OID vs SUB",
+      "category" : "",
+      "tags"     : "microsoft, identity, platform, azure, enterprise, and active directory",
+      "url"      : "/blog/2021/04/30/mip-oid-sub/",
+      "date"     : "2021-04-30 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Solving an Enterprise Integration problem with Azure Serverless",
       "category" : "",
       "tags"     : "serverless, azure, enterprise, and integration",
