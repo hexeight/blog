@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "How to avoid surprises when extending applications with Serverless file uploads on Azure",
+      "category" : "",
+      "tags"     : "microsoft, azure, serverless, functions, storage account, blob, file upload, security, and sas",
+      "url"      : "/blog/2021/09/01/azure-serverless-upload/",
+      "date"     : "2021-09-01 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Identifying a unique user on Microsoft Identity Platform - OID vs SUB",
       "category" : "",
       "tags"     : "microsoft, identity, platform, azure, enterprise, and active directory",
