@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>0x8 — How to avoid surprises when extending applications with Serverless file uploads on Azure</title>
+  <title>0x8 — Building Serverless File Uploads on Azure the right way</title>
   <meta name='description' content='Off-loading file uploads to blob storage is well documented serverless approach. There are a few things you have to consider before you expose your applicati...'>
 
-  <link rel="canonical" href="https://0x8.in/blog/2021/09/01/azure-serverless-upload/">
+  <link rel="canonical" href="https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/">
   <link rel="alternate" type="application/rss+xml" title="0x8" href="/blog/feed.xml">
 
-  <meta name="title" content="How to avoid surprises when extending applications with Serverless file uploads on Azure">
+  <meta name="title" content="Building Serverless File Uploads on Azure the right way">
   <meta name="description" content="Off-loading file uploads to blob storage is well documented serverless approach. There are a few things you have to consider before you expose your applicati...">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://0x8.in/blog/2021/09/01/azure-serverless-upload/">
-  <meta property="og:title" content="0x8 — How to avoid surprises when extending applications with Serverless file uploads on Azure">
+  <meta property="og:url" content="https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/">
+  <meta property="og:title" content="0x8 — Building Serverless File Uploads on Azure the right way">
   <meta name="description" content="Off-loading file uploads to blob storage is well documented serverless approach. There are a few things you have to consider before you expose your applicati...">
   <meta property="og:image" content="/blog/images/craft.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://0x8.in/blog/2021/09/01/azure-serverless-upload/">
-<meta property="twitter:title" content="0x8 — How to avoid surprises when extending applications with Serverless file uploads on Azure">
+<meta property="twitter:url" content="https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/">
+<meta property="twitter:title" content="0x8 — Building Serverless File Uploads on Azure the right way">
 <meta property="twitter:description" content="Off-loading file uploads to blob storage is well documented serverless approach. There are a few things you have to consider before you expose your applicati...">
 <meta property="twitter:image" content="/blog/images/craft.png">
 
@@ -297,7 +297,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<div class="col col-12">
 			
 			<div class="post__head wow fadeInUp">
-				<h1 class="post__title">How to avoid surprises when extending applications with Serverless file uploads on Azure</h1>
+				<h1 class="post__title">Building Serverless File Uploads on Azure the right way</h1>
 				<div class="post-info">
 					
 					<span class="post-tags">
@@ -346,11 +346,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			
 	
 				<div class="post__content">
-					<p>Few months ago I happened to work on a conceptual application that involved processing videos on Azure. One of the problem statements involved having a scalable yet economical method to allow users to upload videos that could be at least few tens of GBs. That introduced me to a nifty trick to use a blob storage as a broker to enable large file uploads. Here’s a 4 minute video on Channel 9 Studio that summarizes it well. Don’t forget to come back and continue reading because there is more that needs attention to really build this right.</p>
+					<p>Few months ago I happened to work on a conceptual application that involved processing videos on Azure. One of the problem statements involved having a scalable yet economical method to allow users to upload videos that could be at least few tens of GBs. That introduced me to a nifty trick to use a blob storage as a broker to enable large file uploads. Here’s a 4 minute video by Channel 9 Studio that summarizes it well. Don’t forget to come back and continue reading because there is more that needs attention to really build this right.</p>
 
 <iframe src="https://channel9.msdn.com/Series/Beginners-Series-to-Serverless/File-Uploads-with-Serverless-15-of-16--Beginners-Series-to-Serverless/player" width="100%" height="540" allowfullscreen="" frameborder="0" title="File Uploads with Serverless [15 of 16] | Beginner's Series to: Serverless - Microsoft Channel 9 Video"></iframe>
 
-<p>If you are wondering why go through a serverless approach at all - let’s ensure we have something covered. File uploads are tricky business and in the era of serverless solutions, I see little reason to route heavy HTTP transactions through the primary application infrastructure, especially when dealing with large file uploads. Anything above 5MB should not be routed to your primary application host for reasons documented at the <a href="#why-not">end of this post</a>.</p>
+<p>Why go through a serverless approach at all? File uploads are tricky business and in the era of serverless solutions, I see little reason to route heavy HTTP transactions through the primary application infrastructure, especially when dealing with large file uploads. Anything above 5MB should not be routed to your primary application host for reasons documented at the <a href="#why-not">end of this post</a>.</p>
 
 <p>This is what a video processing application might look like with serverless file uploads.</p>
 
@@ -359,35 +359,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <p>Channel 9 Studio could only do justice to the core concept in 4 minutes. In this post, I’ll document a few important considerations.</p>
 
 <h2 id="before-you-take-this-to-production">Before you take this to production</h2>
-<p>You may have noticed already that the crux of this approach lies in off-loading the complete logistics of a file upload to the storage account. While this will scale gracefully it does not take care of …</p>
+<p>You may have noticed already that the crux of this approach lies in off-loading the complete logistics of a file upload to the storage account. You need to consider the following.</p>
 
 <h3 id="user-backed-sas-keys-are-irrevocable">User backed SAS Keys are irrevocable</h3>
 <p>SAS keys once handed over to your clients (web, mobile, etc.) are irrevocable. If the SAS key isn’t generated correctly, your storage account is at risk of being exposed to abuse.</p>
 
 <h3 id="file-validation">File validation</h3>
-<p>The storage account does not validate the uploaded file. So the container where the file is being uploaded should be assumed unsafe by all other parts of your application. I would in fact recommend maintaining a dedicate storage account and container for uploading files. These files can be moved to within the perimeters of your application once validated by a logic app or a blob triggered function.</p>
+<p>The storage account does not validate the uploaded file. So the container where the file is being uploaded should be assumed unsafe by all other parts of your application. I would in fact recommend maintaining a dedicate storage account and container for uploading files. These files can be moved within the perimeters of your application once validated by a logic app or a blob triggered function.</p>
 
 <p><em>Note: Azure Advanced Thread Protection supports scanning of storage account blobs for possible malware using Hash Reputation Analysis. <a href="https://docs.microsoft.com/en-us/azure/security-center/defender-for-storage-introduction#what-is-hash-reputation-analysis-for-malware">read more</a></em></p>
 
 <h3 id="file-size-limits">File size limits</h3>
-<p>This is the most important bit considering the cost implications. The storage account does not limit the size of files being uploaded. The maximum size of the file is dictated by the blob type. Keeping a short expiry on the SAS key doesn’t help either.</p>
+<p>Storage account does not limit the size of files being uploaded. The maximum size of the file is dictated by the blob type. Keeping a short expiry on the SAS key doesn’t help either.</p>
 
 <p><img src="/blog/images/posts/sas-large-file1.png" alt="" /></p>
 
-<p>I tried creating a key that expires in 50 seconds and was able to upload a 1 GB file in ~9 minutes and 2GB file in ~17minutes through 2 separate tests.</p>
+<p>I tried creating a key that expires in 50 seconds and was able to upload a 1 GB file in ~9 minutes and 2GB file in ~17minutes through 2 separate tests. This likely because the HTTP transaction started within a valid timeframe.</p>
 
 <h2 id="way-forward">Way forward</h2>
 <p>Does this mean that you cannot off-load file uploaded to a storage account? Certainly not. You can very well identify the risks and place mitigation measures.</p>
 
-<h3 id="do-not-generate-sas-keys-for-unauthorized-users">Do not generate SAS keys for unauthorized users</h3>
-<p>Allowing file uploads by anonymous users should be a strict no. You leave little opportunity to control abuse of a resource that you are get billed for in terms of storage and bandwidth.</p>
+<h3 id="do-not-generate-sas-keys-for-unauthenticated-users">Do not generate SAS keys for unauthenticated users</h3>
+<p>Allowing file uploads by anonymous users should be a strict no. You leave little opportunity to control abuse of a resource that you are getting billed for in terms of storage and bandwidth.</p>
 
-<h3 id="generate-well-a-scoped-sas-token-make-no-exceptions">Generate well a scoped SAS token. Make no exceptions.</h3>
+<h3 id="generate-a-well-scoped-sas-token">Generate a well scoped SAS token</h3>
 <p>Ensure that your SAS key is narrowly scoped. For a file upload use case you can ensure the following</p>
 <ul>
   <li>Start expiry few seconds before current time to prevent clock skew issues</li>
-  <li>Keep end expiry reasonably short to prevent abuse and long to support slow connections. No harm in keeping it short and increasing the duration based on user feedback.</li>
-  <li>Provide create permission only (c). Users should NOT be able to read the file they uploaded. This opens more opportunity for abuse.</li>
+  <li>Keep end expiry reasonably short to prevent abuse and just long enough to support slow connections. No harm in keeping it short and increasing the duration based on user feedback.</li>
+  <li>Provide “create” permission only. Users should NOT be able to read the file they uploaded. This opens more opportunity for abuse.</li>
   <li>Scope the SAS key to container and file name. Ensure that the file name stays unique for all users/sessions.</li>
   <li>Include requestor’s IP address in the SAS key scope to prevent abuse from other networks.</li>
 </ul>
@@ -408,10 +408,10 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 <p>Read more about <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview#best-practices-when-using-sas">SAS best practices here</a>.</p>
 
 <h3 id="maintain-logs-of-file-upload-sessions">Maintain logs of file upload sessions</h3>
-<p>Maintain logs that can help trace back a file to the user and possibly the IP address that uploaded it. In event of abuse these identifier help you block future transactions.</p>
+<p>Maintain logs that can help trace back a file to the user and possibly the IP address that uploaded it. In event of abuse these identifiers help you block future transactions from the same source.</p>
 
 <h3 id="use-blob-triggered-functionlogic-app-to-validate-and-move-files-to-you-application-perimeters">Use blob triggered Function/Logic App to validate and move files to you application perimeters</h3>
-<p>Your implementation could be supporting a simple photo upload for a user’s display picture or large file uploads for a video processing/hosting service. You can implement a blob triggered function that validates the file’s size and content before moving it to the application perimeters for consumption.</p>
+<p>Your implementation could be supporting a simple photo upload for a user’s display picture or large file uploads for a video processing/hosting service. You can implement a blob triggered function that validates the file’s size and content before moving it to primary application perimeters for consumption.</p>
 
 <p>This is what the video processing application may look like with a few more measures in place.</p>
 
@@ -424,10 +424,10 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 <p>Depending on your file upload implementation, the file being uploaded is going to reside completely or partially in your application memory. This directly affects the scalability of your application. Especially concerning if the file upload behaviours are inconsistent and difficult to plan ahead.</p>
 
 <h3 id="sockets">Sockets</h3>
-<p>HTTP requests consume socket connections. Sockets, just like Memory or CPU are exhaustible. Large file uploads hold up sockets for longer durations impacting your server’s ability to serve other clients. There are slow networks that can upload files at speeds lower than an megabyte per minute. Such clients will hog your connection pool over long durations. This can further act as an attack vector for DoS attacks.</p>
+<p>HTTP requests consume socket connections. Sockets, just like Memory or CPU are exhaustible. Large file uploads hold up sockets for longer durations impacting your server’s ability to serve other clients. There are slow networks that can upload files at speeds lower than an megabyte per minute. Such clients will hog your connection pool over long durations. This can also act as an attack vector for DoS attacks.</p>
 
 <h3 id="security">Security</h3>
-<p>File upload endpoints are vectors for buffer overflow attacks. Malicious files can only be validated once they reach your servers especially if the same servers are being used to process sensitive information for other customers.</p>
+<p>File upload endpoints also open opportunity for buffer overflow attacks. Malicious files can only be validated once they reach your servers. This is risky especially if the same servers are being used to process sensitive information for other customers.</p>
 
 <p><em>Do you think there more that needs attention when exposing a blob storage to act as a broker for file uploads? Drop you thoughts and suggestions in comments. Cheers.</em></p>
 
@@ -437,21 +437,21 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 					<ul class="share__list list-reset">
 						<li class="share__item">
 							<a class="share__link share__facebook"
-								href="https://www.facebook.com/sharer/sharer.php?u=https://0x8.in/blog/2021/09/01/azure-serverless-upload/"
+								href="https://www.facebook.com/sharer/sharer.php?u=https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
 						</li>
 					
 						<li class="share__item">
 							<a class="share__link share__twitter"
-								href="https://twitter.com/intent/tweet?text=How%20to%20avoid%20surprises%20when%20extending%20applications%20with%20Serverless%20file%20uploads%20on%20Azure&url=https://0x8.in/blog/2021/09/01/azure-serverless-upload/"
+								href="https://twitter.com/intent/tweet?text=Building%20Serverless%20File%20Uploads%20on%20Azure%20the%20right%20way&url=https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
 						</li>
 					
 						<li class="share__item">
 							<a class="share__link share__pinterest"
-								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/09/01/azure-serverless-upload/&amp;media=https://0x8.in/blog/images/&amp;description=How%20to%20avoid%20surprises%20when%20extending%20applications%20with%20Serverless%20file%20uploads%20on%20Azure"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/09/01/azure-serverless-file-upload/&amp;media=https://0x8.in/blog/images/&amp;description=Building%20Serverless%20File%20Uploads%20on%20Azure%20the%20right%20way"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
 						</li>
@@ -483,7 +483,7 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 							<div class="recent-posts__content">			
 								
 								
-									<p class="recent-posts__title"><a href="/blog/2021/09/01/azure-serverless-upload/">How to avoid surprises when extending applications with Serverless file uploads on Azure</a></p>
+									<p class="recent-posts__title"><a href="/blog/2021/09/01/azure-serverless-file-upload/">Building Serverless File Uploads on Azure the right way</a></p>
 							</div>
 						</div>
 						

@@ -1,10 +1,10 @@
 [
   
     {
-      "title"    : "How to avoid surprises when extending applications with Serverless file uploads on Azure",
+      "title"    : "Building Serverless File Uploads on Azure the right way",
       "category" : "",
       "tags"     : "microsoft, azure, serverless, functions, storage account, blob, file upload, security, and sas",
-      "url"      : "/blog/2021/09/01/azure-serverless-upload/",
+      "url"      : "/blog/2021/09/01/azure-serverless-file-upload/",
       "date"     : "2021-09-01 00:00:00 +0530"
     } ,
   
