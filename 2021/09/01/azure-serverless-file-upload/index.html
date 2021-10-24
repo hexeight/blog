@@ -19,14 +19,14 @@
   <meta property="og:url" content="https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/">
   <meta property="og:title" content="0x8 — Building Serverless File Uploads on Azure the right way">
   <meta name="description" content="Off-loading file uploads to blob storage is well documented serverless approach. There are a few things you have to consider before you expose your applicati...">
-  <meta property="og:image" content="/blog/images/craft.png">
+  <meta property="og:image" content="/images/posts/banner-serverless-storage.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://0x8.in/blog/2021/09/01/azure-serverless-file-upload/">
 <meta property="twitter:title" content="0x8 — Building Serverless File Uploads on Azure the right way">
 <meta property="twitter:description" content="Off-loading file uploads to blob storage is well documented serverless approach. There are a few things you have to consider before you expose your applicati...">
-<meta property="twitter:image" content="/blog/images/craft.png">
+<meta property="twitter:image" content="/images/posts/banner-serverless-storage.png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
@@ -380,6 +380,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<article class="post wow fadeInUp" data-wow-delay=".2s">
 	
 			
+				<div class="post-image" style="background-image: url('/blog/images/posts/banner-serverless-storage.png')"></div>
+			
 	
 				<div class="post__content">
 					<p>Few months ago I happened to work on a conceptual application that involved processing videos on Azure. One of the problem statements involved having a scalable yet economical method to allow users to upload videos that could be at least few tens of GBs. That introduced me to a nifty trick to use a blob storage as a broker to enable large file uploads. Here’s a 4 minute video by Channel 9 Studio that summarizes it well. Don’t forget to come back and continue reading because there is more that needs attention to really build this right.</p>
@@ -487,7 +489,7 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 					
 						<li class="share__item">
 							<a class="share__link share__pinterest"
-								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/09/01/azure-serverless-file-upload/&amp;media=https://0x8.in/blog/images/&amp;description=Building%20Serverless%20File%20Uploads%20on%20Azure%20the%20right%20way"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/09/01/azure-serverless-file-upload/&amp;media=https://0x8.in/blog/images//images/posts/banner-serverless-storage.png&amp;description=Building%20Serverless%20File%20Uploads%20on%20Azure%20the%20right%20way"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
 						</li>
@@ -528,6 +530,8 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 						<div class="recent-posts">
 							<div class="recent-posts__content">			
 								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/09/01/azure-serverless-file-upload/"
+										style="background-image: url('/blog/images/posts/banner-serverless-storage.png')"></a>
 								
 									<p class="recent-posts__title"><a href="/blog/2021/09/01/azure-serverless-file-upload/">Building Serverless File Uploads on Azure the right way</a></p>
 							</div>
@@ -536,6 +540,8 @@ sasBuilder.SetPermissions(BlobSasPermissions.Create);
 						<div class="recent-posts">
 							<div class="recent-posts__content">			
 								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/04/30/mip-oid-sub/"
+										style="background-image: url('/blog/images/posts/banner-sub-vs-oid.png')"></a>
 								
 									<p class="recent-posts__title"><a href="/blog/2021/04/30/mip-oid-sub/">Identifying a unique user on Microsoft Identity Platform - OID vs SUB</a></p>
 							</div>
