@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Appreciating the utility of DNS based load-balancing for Globally available Web Apps",
+      "category" : "",
+      "tags"     : "azure, traffic manager, dns, load-balancing, global scale, web app, highly available, RFC1034, RFC1035, and RFC7871",
+      "url"      : "/blog/2021/10/24/dns-load-balance/",
+      "date"     : "2021-10-24 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Building Serverless File Uploads on Azure the right way",
       "category" : "",
       "tags"     : "microsoft, azure, serverless, functions, storage account, blob, file upload, security, and sas",
