@@ -478,7 +478,7 @@ hosts.omktestapp-us.azurewebsites.net. 0 IN A   20.49.104.31
 </code></pre></div></div>
 <p>New York, US (routed to East US datacenter)</p>
 
-<p>At the time of writing the Azure Traffic Manager costs $0.54/million DNS queries with additional costs for health checks peaking at $2/endpoint/month. If your web app is being served via 6 continents with over a million daily DNS queries, you pay approx ($2 x 6) + ($0.54 x 30) = $28.2/month.</p>
+<p>At the time of writing the Azure Traffic Manager costs $0.54/million DNS queries with additional costs for health checks peaking at $2/endpoint/month. If your web app is being served via 6 continents with over a million daily DNS queries, you pay approx ($2 x 6) + ($0.54 x 30) = $28.2/month. Check the pricing page for more details - <a href="https://azure.microsoft.com/en-us/pricing/details/traffic-manager/">Azure Traffic Manager pricing</a>.</p>
 
 <p>This summarizes what goes under the hood of services like Azure Traffic Manager and how DNS based load-balancing can help you build a global scale web application.</p>
 
