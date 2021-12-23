@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Understanding flapping and identifying the autoscale sweet spot",
+      "category" : "",
+      "tags"     : "azure, web app, autoscale, and flapping",
+      "url"      : "/blog/2021/12/15/flapping-autoscale/",
+      "date"     : "2021-12-15 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Appreciating the utility of DNS based load-balancing for Globally available Web Apps",
       "category" : "",
       "tags"     : "azure, traffic manager, dns, load-balancing, global scale, web app, highly available, RFC1034, RFC1035, and RFC7871",
