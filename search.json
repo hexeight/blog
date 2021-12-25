@@ -1,7 +1,7 @@
 [
   
     {
-      "title"    : "Understanding flapping and identifying the autoscale sweet spot",
+      "title"    : "Understanding flapping and optimizing autoscale",
       "category" : "",
       "tags"     : "azure, web app, autoscale, and flapping",
       "url"      : "/blog/2021/12/15/flapping-autoscale/",

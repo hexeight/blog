@@ -6,25 +6,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>0x8 — Understanding flapping and identifying the autoscale sweet spot</title>
+  <title>0x8 — Understanding flapping and optimizing autoscale</title>
   <meta name='description' content=''>
 
   <link rel="canonical" href="https://0x8.in/blog/2021/12/15/flapping-autoscale/">
   <link rel="alternate" type="application/rss+xml" title="0x8" href="/blog/feed.xml">
 
-  <meta name="title" content="Understanding flapping and identifying the autoscale sweet spot">
+  <meta name="title" content="Understanding flapping and optimizing autoscale">
   <meta name="description" content="">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://0x8.in/blog/2021/12/15/flapping-autoscale/">
-  <meta property="og:title" content="0x8 — Understanding flapping and identifying the autoscale sweet spot">
+  <meta property="og:title" content="0x8 — Understanding flapping and optimizing autoscale">
   <meta name="description" content="">
   <meta property="og:image" content="/images/posts/flapping-banner.png">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://0x8.in/blog/2021/12/15/flapping-autoscale/">
-<meta property="twitter:title" content="0x8 — Understanding flapping and identifying the autoscale sweet spot">
+<meta property="twitter:title" content="0x8 — Understanding flapping and optimizing autoscale">
 <meta property="twitter:description" content="">
 <meta property="twitter:image" content="/images/posts/flapping-banner.png">
 
@@ -341,7 +341,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<div class="col col-12">
 			
 			<div class="post__head wow fadeInUp">
-				<h1 class="post__title">Understanding flapping and identifying the autoscale sweet spot</h1>
+				<h1 class="post__title">Understanding flapping and optimizing autoscale</h1>
 				<div class="post-info">
 					
 					<span class="post-tags">
@@ -382,19 +382,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			
 	
 				<div class="post__content">
-					<p>The unpredictability of compute or storage demands of web appliications made the Cloud happen. The ability to scale as per your instantaneous requirements and being charged just for those instances is the crux of the pitch for moving to the cloud. This what the autoscaling capabilities of Azure Web Apps help you achieve. Autoscale adds more compute instances (scale-out) or increase the size of your existing instance (scale-up) based on metrics that you define.</p>
+					<p>The unpredictability of compute or storage demands of web applications made the Cloud happen. The ability to scale as per your instantaneous requirements and being charged just for those instances is the crux of the pitch for moving to the cloud. This what the autoscaling capabilities of Azure Web Apps help you achieve. Autoscale adds more compute instances (scale-out) or increase the size of your existing instance (scale-up) based on metrics that you define.</p>
 
-<p>For example - you may choose to add 1 new instance to your App Service Plan if the CPU usage remains above 90% consumption for more than 15 minutes. While scaling up is great, it is also important for your App Service Plan to scale down once peak traffic is over and the stress on your application starts receeding. So you can choose to reduce 1 instance from your App Service Plan if the average CPU usage across all instances reduces below 80%.</p>
+<p>For example - you may choose to add 1 new instance to your App Service Plan if the CPU usage remains above 90% consumption for more than 15 minutes. While scaling up is great, it is also important for your App Service Plan to scale down once peak traffic is over and the stress on your application starts receding. So you can choose to reduce 1 instance from your App Service Plan if the average CPU usage across all instances reduces below 80%.</p>
 
-<p>This summarizes the autoscaling capability; however, the behaviour of the metrics and thresholds that define your autoscale rules can be slightly nuanced. Lets build on top of the previous example.</p>
+<p>This summarizes the autoscaling capability; however, the behaviour of the metrics and thresholds that define your autoscale rules can be slightly nuanced. Let’s build on top of the previous example.</p>
 
 <ul>
   <li>Assume that the application started receiving high volume of requests at 6:00am continuing to increase average CPU usage to 90% until 6:30am. This will trigger the scale-out rule a couple times, adding 2 instances to the App Service Plan making the total instance count 4.</li>
   <li>The traffic is now shared by 4 instances and average CPU usage drops to 80% while the same volume of traffic continues.</li>
-  <li>At 7:30am traffic gradually starts receeding and average CPU usage drops to 79% eventually triggering the scale-in rule reducing the instance count to 3.</li>
+  <li>At 7:30am traffic gradually starts receding and average CPU usage drops to 79% eventually triggering the scale-in rule reducing the instance count to 3.</li>
 </ul>
 
-<p>While this might seem expected, lets understand implications here. A total of 4 instances where signaling average CPU usage of 79%. Reducing a single instance with existing traffic will lead to (4 x 79) / (4 - 1) = 105.33% average CPU usage. This is far less than ideal behaviour and will eventually create a scale-in, scale-out loop as seen below starting 7:30 or even worse, crash the application servers.</p>
+<p>While this might seem expected, let’s understand implications here. A total of 4 instances where signalling average CPU usage of 79%. Reducing a single instance with existing traffic will lead to (4 x 79) / (4 - 1) = 105.33% average CPU usage. This is far less than ideal behaviour and will eventually create a scale-in, scale-out loop as seen below starting 7:30 or even worse, crash the application servers.</p>
 
 <p><img src="/blog/images/posts/scale-with-flapping.png" alt="Scale with flapping" /></p>
 
@@ -405,29 +405,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <h2 id="how-do-you-prevent-flapping">How do you prevent flapping?</h2>
 <p>While anti-flapping measures on Azure protect you, it is a good practice to take calculated steps to avoid such events. A common recommendation is to keep the scale-in and scale-out thresholds wide apart. While this helps to some degree, the mathematical relationship helps paint a clear picture.</p>
 
-<p><strong><em>Scale instances</em></strong>, meaning the number of instances being added or removed in a single autoscale operation and <strong><em>allocated instances</em></strong> meaning the number of instances being used at any point in time. Most common occurance of flapping is found when the <em>ratio of scale instances to operating instances is high</em>. In the above example we have default 2 instances and scale instance is 1. Which is essentially adding 50% more compute. At peak operating point, there are 4 allocated instances. Scale-in of 1 instance causes 25% drop in compute capacity. Flapping would not be observed under the same autoscale configuration above if the peak number of allocated instances was 10.</p>
+<p><strong><em>Scale instances</em></strong>, meaning the number of instances being added or removed in a single autoscale operation and <strong><em>allocated instances</em></strong> meaning the number of instances being used at any point in time. Most common occurrence of flapping is found when the <em>ratio of scale instances to operating instances is high</em>. In the above example we have default 2 instances and scale instance is 1. Which is essentially adding 50% more compute. At peak operating point, there are 4 allocated instances. Scale-in of 1 instance causes 25% drop in compute capacity. Flapping would not be observed under the same autoscale configuration above if the peak number of allocated instances was 10.</p>
 
 <p>In the graphs below, the X-axis indicates allocated instances while the Y-axis indicates the scale metric (average CPU%). The green line is the scale-out threshold while the red line is the scale-in threshold.</p>
 
 <h3 id="scaling-in">Scaling in</h3>
-<p>Autoscale will operate a scale-in if the metric falls below 80%. The blue line in the graph below indicates the resulting metric after a scale-in operation. Flapping can be observed for all scale-in operations when the allocated instances are less than 9. In this range the metric shoots above the 90% scale-out threshold which will trigger a scale-out immediately. Azure will prevent this operation with its anti-flapping measures. This doesn’t mean that scale-in will never happen. The operation will simply be delayed until the metric falls further below.</p>
+<p>Autoscale will operate a scale-in if the metric falls below 80%. The blue line in the graph below indicates the resulting metric after a scale-in operation. Flapping can be observed for all scale-in operations when the allocated instances are less than 9. In this range the metric shoots above the 90% scale-out threshold which will trigger a scale-out immediately. Azure will prevent this operation with its anti-flapping measures.</p>
 
 <iframe src="https://www.desmos.com/calculator/tfc85isirm?embed" width="100%" height="500" style="border: 1px solid #ccc" frameborder="0"></iframe>
 <p><br /></p>
 
 <h2 id="scale-out">Scale out</h2>
-<p>Autoscale will operate a scale-out if the metric crosses 90%. The purple line in the graph below indicates the resulting metric after a scale-out operation. Flapping can be observed for all scale-out operations below 8 allocated instances. In this range the metric drops below the 80% scale-in threshold which will trigger a scale-in immediately. Azure will prevent this operation with its anti-flapping measures. Similar to scale-in, this simply means the scale-out operation is going to be delayed.</p>
+
+<p>More instances don’t hurt an application so scale-out will work as per thresholds. Autoscale does not block scale-out operations as part of the anti-flapping mechanism. The costs still apply so it is at least insightful to apply the math for scale-out too. The purple line in the graph below indicates the resulting metric after a scale-out operation. It can be observed that scale-out works optimally for all scale-out operations above 8 allocated instances. Below this range the metric drops below the 80% scale-in threshold which will qualify for a scale-in that eventually gets protected by anti-flapping mechanisms in autoscale. Azure will prevent this operation with its anti-flapping measures. Similar to scale-in, this simply means the scale-out operation is going to be delayed.</p>
 
 <iframe src="https://www.desmos.com/calculator/nd7eor1jkq?embed" width="100%" height="500" style="border: 1px solid #ccc" frameborder="0"></iframe>
 <p><br /></p>
 
 <h2 id="tune-it">Tune it</h2>
-<p>With the math in front of us, we can now tweak our autoscale settings considering the traffic patterns on our services. Feel free to click on the Desmos link on the graph below to play around with the autoscale configurations to find a sweet spot for your autoscale configurations.</p>
+<p>With the math in front of us, we can now tweak our autoscale settings considering the traffic patterns on our services. Feel free to click on the <a href="https://www.desmos.com/calculator/wv9dikpmno">Desmos link</a> on the graph below to play around with the autoscale configurations to find a sweet spot for your autoscale configurations.</p>
 
 <iframe src="https://www.desmos.com/calculator/wv9dikpmno?embed" width="100%" height="500" style="border: 1px solid #ccc" frameborder="0"></iframe>
 <p><br /></p>
 
-<p>Got thoughts or ideas? drop a comment or email om [at] 0x8 dot in.</p>
+<h3 id="caution-with-memory-based-metrics">Caution with Memory based metrics</h3>
+<p>When choosing an autoscale metric based on memory an interesting caveat can be observed. Memory usage can be attributed to the application as well as the operating system. The operating system contributes to a significant portion of the memory on smaller instances. As scale-out operation are performed, memory usage by operating systems also keeps adding. This can lead to situations where memory usage metrics either keep spiking up or scale-in is prevented by anti-flapping mechanisms. A more detailed explanation can be found here <a href="https://medium.com/@jonfinerty/flapping-and-anti-flapping-dcba5ba92a05">https://medium.com/@jonfinerty/flapping-and-anti-flapping-dcba5ba92a05</a>.</p>
+
+<p>Ideas presented here are based on my personal observations. Please maintain caution when applying configurations on your own cloud environments. Your results might vary. Got feedback or ideas? drop a comment or email om [at] 0x8 dot in.</p>
 
 				</div>
 	
@@ -442,14 +446,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					
 						<li class="share__item">
 							<a class="share__link share__twitter"
-								href="https://twitter.com/intent/tweet?text=Understanding%20flapping%20and%20identifying%20the%20autoscale%20sweet%20spot&url=https://0x8.in/blog/2021/12/15/flapping-autoscale/"
+								href="https://twitter.com/intent/tweet?text=Understanding%20flapping%20and%20optimizing%20autoscale&url=https://0x8.in/blog/2021/12/15/flapping-autoscale/"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
 						</li>
 					
 						<li class="share__item">
 							<a class="share__link share__pinterest"
-								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/12/15/flapping-autoscale/&amp;media=https://0x8.in/blog/images//images/posts/flapping-banner.png&amp;description=Understanding%20flapping%20and%20identifying%20the%20autoscale%20sweet%20spot"
+								href="http://pinterest.com/pin/create/button/?url=https://0x8.in/2021/12/15/flapping-autoscale/&amp;media=https://0x8.in/blog/images//images/posts/flapping-banner.png&amp;description=Understanding%20flapping%20and%20optimizing%20autoscale"
 								onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
 								title="Share on Pinterest" rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
 						</li>
@@ -483,7 +487,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/12/15/flapping-autoscale/"
 										style="background-image: url('/blog/images/posts/flapping-banner.png')"></a>
 								
-									<p class="recent-posts__title"><a href="/blog/2021/12/15/flapping-autoscale/">Understanding flapping and identifying the autoscale sweet spot</a></p>
+									<p class="recent-posts__title"><a href="/blog/2021/12/15/flapping-autoscale/">Understanding flapping and optimizing autoscale</a></p>
 							</div>
 						</div>
 						
