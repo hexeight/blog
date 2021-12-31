@@ -297,6 +297,30 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 
                   
                 
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
               </ul>
             </div>
 
@@ -355,11 +379,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 						
 							<a href="/blog/tag/web app" class="post-tags__tag">web app</a>
 						
+							<a href="/blog/tag/virtual machine" class="post-tags__tag">virtual machine</a>
+						
 							<a href="/blog/tag/autoscale" class="post-tags__tag">autoscale</a>
+						
+							<a href="/blog/tag/scale-in" class="post-tags__tag">scale-in</a>
+						
+							<a href="/blog/tag/scale-out" class="post-tags__tag">scale-out</a>
 						
 							<a href="/blog/tag/flapping" class="post-tags__tag">flapping</a>
 						
-							<a href="/blog/tag/autoscale-optimizations" class="post-tags__tag">autoscale-optimizations</a>
+							<a href="/blog/tag/optimize" class="post-tags__tag">optimize</a>
+						
+							<a href="/blog/tag/autoscale-optimize" class="post-tags__tag">autoscale-optimize</a>
 						
 					</span>
 					
@@ -391,8 +423,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 					<p>This post is divided into 3 parts to simplify the learning process and help understand autoscale and related concepts along with mathematical models on each step. These models will allow visualizing and optimizing of autoscale configurations. In these 3 parts we will focus on the following topics.</p>
 <ol>
   <li>Understanding flapping (current)</li>
-  <li>Challenges with memory based metrics</li>
-  <li>Identifying actual scale-in metrics</li>
+  <li><a href="/blog/2021/12/25/autoscale-effective-scale-in-metric">Identifying effective scale-in metrics</a></li>
+  <li><a href="/blog/2021/12/28/autoscale-memory/">Challenges with memory based metrics</a></li>
 </ol>
 
 <p>The unpredictability of compute or storage demands of web applications made the Cloud happen. The ability to scale as per your instantaneous requirements and being charged just for those instances is the crux of the pitch for moving to the cloud. This what the autoscaling capabilities of Azure Web Apps help you achieve. Autoscale adds more compute instances (scale-out) or increase the size of your existing instance (scale-up) based on metrics that you define. While scaling out is important for the availability of your service, scaling in is important to keep costs under control.</p>
@@ -438,7 +470,7 @@ r<sub>i</sub> = (x * t<sub>i</sub>) / (x - s)<br />
 <h2 id="scale-out">Scale out</h2>
 <p>More instances don’t hurt an application so scale-out will work as per thresholds. Autoscale does not block scale-out operations as part of the anti-flapping mechanism. The costs still apply so it is at least insightful to apply the math for scale-out too.</p>
 
-<p>The plot (purple) uses the following equation to calculate the <strong><em>resulting scale-out metric (r<sub>o</sub>)</em></strong> considering the current metric has reached the <strong><em>scale-out threshold (t<sub>o</sub>)</em></strong>..</p>
+<p>The plot (purple) uses the following equation to calculate the <strong><em>resulting scale-out metric (r<sub>o</sub>)</em></strong> considering the current metric has reached the <strong><em>scale-out threshold (t<sub>o</sub>)</em></strong>.</p>
 
 <p style="text-align: center;">
 r<sub>o</sub> = (x * t<sub>o</sub>) / (x + s)<br />
@@ -454,7 +486,7 @@ r<sub>o</sub> = (x * t<sub>o</sub>) / (x + s)<br />
 <iframe src="https://www.desmos.com/calculator/9lkh1quckn?embed" width="100%" height="500" style="border: 1px solid #ccc" frameborder="0"></iframe>
 <p><br /></p>
 
-<p><em>In the next part we will dive into challenges faced when using memory based metrics for autoscale configurations.</em></p>
+<p><em>In the next part we will discuss an approach to <a href="/blog/2021/12/25/autoscale-effective-scale-in-metric">identify effective scale-in metrics</a>.</em></p>
 
 <p>Ideas presented here are based on my personal observations. Please maintain caution when applying configurations on your own cloud environments. Your results might vary. Got feedback or ideas? drop a comment or email om [at] 0x8 dot in.</p>
 
@@ -509,30 +541,30 @@ r<sub>o</sub> = (x * t<sub>o</sub>) / (x + s)<br />
 						<div class="recent-posts">
 							<div class="recent-posts__content">			
 								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/12/28/autoscale-memory/"
+										style="background-image: url('/blog/images/posts/banners/autoscale-memory.png')"></a>
+								
+									<p class="recent-posts__title"><a href="/blog/2021/12/28/autoscale-memory/">Autoscale optimizations - Challenges with memory based metrics</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
+									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/12/25/autoscale-effective-scale-in-metric/"
+										style="background-image: url('/blog/images/posts/banners/autoscale-effective-scale-in.png')"></a>
+								
+									<p class="recent-posts__title"><a href="/blog/2021/12/25/autoscale-effective-scale-in-metric/">Autoscale optimizations - Identifying effective scale-in metrics</a></p>
+							</div>
+						</div>
+						
+						<div class="recent-posts">
+							<div class="recent-posts__content">			
+								
 									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/12/15/flapping-autoscale/"
 										style="background-image: url('/blog/images/posts/flapping-banner.png')"></a>
 								
 									<p class="recent-posts__title"><a href="/blog/2021/12/15/flapping-autoscale/">Autoscale optimizations - Understanding flapping</a></p>
-							</div>
-						</div>
-						
-						<div class="recent-posts">
-							<div class="recent-posts__content">			
-								
-									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/10/24/dns-load-balance/"
-										style="background-image: url('/blog/images/posts/dns-load-balance-banner.png')"></a>
-								
-									<p class="recent-posts__title"><a href="/blog/2021/10/24/dns-load-balance/">Appreciating the utility of DNS based load-balancing for Globally available Web Apps</a></p>
-							</div>
-						</div>
-						
-						<div class="recent-posts">
-							<div class="recent-posts__content">			
-								
-									<a class="recent-posts__image wow fadeIn" href="{site.baseurl}/2021/09/01/azure-serverless-file-upload/"
-										style="background-image: url('/blog/images/posts/banner-serverless-storage.png')"></a>
-								
-									<p class="recent-posts__title"><a href="/blog/2021/09/01/azure-serverless-file-upload/">Building Serverless File Uploads on Azure the right way</a></p>
 							</div>
 						</div>
 						
