@@ -1,9 +1,25 @@
 [
   
     {
+      "title"    : "Autoscale optimizations - Challenges with memory based metrics",
+      "category" : "",
+      "tags"     : "azure, web app, virtual machine, autoscale, scale-in, scale-out, memory, flapping, optimize, and autoscale-optimize",
+      "url"      : "/blog/2021/12/28/autoscale-memory/",
+      "date"     : "2021-12-28 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Autoscale optimizations - Identifying effective scale-in metrics",
+      "category" : "",
+      "tags"     : "azure, web app, virtual machine, autoscale, scale-in, scale-out, flapping, optimize, and autoscale-optimize",
+      "url"      : "/blog/2021/12/25/autoscale-effective-scale-in-metric/",
+      "date"     : "2021-12-25 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Autoscale optimizations - Understanding flapping",
       "category" : "",
-      "tags"     : "azure, web app, autoscale, flapping, and autoscale-optimizations",
+      "tags"     : "azure, web app, virtual machine, autoscale, scale-in, scale-out, flapping, optimize, and autoscale-optimize",
       "url"      : "/blog/2021/12/15/flapping-autoscale/",
       "date"     : "2021-12-15 00:00:00 +0530"
     } ,
